@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Étudiant Ingénieur ESEO</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Portfolio</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#a-propos">À propos</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle">
+                <input type="checkbox" id="darkmode-toggle" class="darkmode-input">
+                <label for="darkmode-toggle" class="darkmode-label">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Alexis Waffo</h1>
+                <h2>Futur Ingénieur ESEO Paris-Vélizy</h2>
+                <p class="tagline">À la recherche d'une alternance de 3 ans en Développement logiciel</p>
+                <div class="cta-buttons">
+                    <a href="#projets" class="btn primary">Voir mes projets</a>
+                    <a href="#contact" class="btn secondary">Me contacter</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#a-propos">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="a-propos" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Mon parcours</h3>
+                    <p>Actuellement étudiant en classe préparatoire intégrée (Prépas Internationales), je m'apprête à intégrer l'école d'ingénieur ESEO Paris-Vélizy à la rentrée prochaine. Passionné par le développement logiciel et les nouvelles technologies, je recherche une alternance de 3 ans pour mettre en pratique mes connaissances et développer mes compétences en entreprise.</p>
+                    
+                    <h3>Mon projet d'alternance</h3>
+                    <p>Je souhaite rejoindre une entreprise innovante dans le secteur du développement logiciel pour une alternance de 3 ans. Mon objectif est de contribuer à des projets concrets tout en poursuivant ma formation d'ingénieur à l'ESEO. Je suis particulièrement intéressé par le développement applicatif, ainsi que par la modélisation des données.</p>
+                </div>
+                <div class="skills">
+                    <h3>Mes compétences</h3>
+                    <div class="skill-category">
+                        <h4>Langages de programmation</h4>
+                        <div class="skill-items">
+                            <div class="skill-item">
+                                <span>HTML/CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 15%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>C</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Technologies</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Arduino</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Bases de données</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Soft Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Travail d'équipe</span>
+                            <span class="skill-tag">Résolution de problèmes</span>
+                            <span class="skill-tag">Autonomie</span>
+                            <span class="skill-tag">Adaptabilité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mes projets</h2>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="arduino">Arduino</button>
+                <button class="filter-btn" data-filter="c">C</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card"
+                 data-category="arduino" 
+                 data-id="Robot-d'Évitement-d'Obstacles" >
+                    <div class="project-img">
+                        <img src="Images/arduino.png" alt="Projet Robot Évitement d'Obstacles">
+                    </div>
+                    <div class="project-info" data-project-id="Robot-d'Évitement-d'Obstacles">
+                        <h3>Robot d'Évitement d'Obstacles</h3>
+                        <p>Développement d'un robot Arduino capable de détecter et d'éviter les obstacles sur son chemin.</p>
+                        <div class="project-tags">
+                            <span>Arduino</span>
+                            <span>Capteurs ultrason</span>
+                            <span>Moteurs</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="Robot-d'Évitement-d'Obstacles">Voir détails</button>
+                    </div>
+                </div>
+                <div class="project-card" 
+                data-category="arduino"
+                data-id="sonar">
+                    <div class="project-img">
+                        <img src="Images/sonar.jpg" alt="Projet Robot Arduino">
+                    </div>
+                    <div class="project-info">
+                        <h3>SONAR</h3>
+                        <p>Conception et programmation d'un sonar capable de balayer un angle de 180°.</p>
+                        <div class="project-tags">
+                            <span>Arduino</span>
+                            <span>Python</span>
+                            <span>Capteurs</span>
+                            <span>Robotique</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="sonar">Voir détails</button>
+                    </div>
+                </div>
+            <!--
+                <div class="project-card"
+                 data-category="c"
+                 data-id="magasin">
+                    <div class="project-img">
+                        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Logiciel%20Gestion" alt="Logiciel de Gestion de Magasin">
+                    </div>
+                    <div class="project-info">
+                        <h3>Logiciel de Gestion de Magasin</h3>
+                        <p>Conception et développement d'un logiciel en C pour la gestion des stocks, des ventes et des clients d'un magasin.</p>
+                        <div class="project-tags">
+                            <span>Langage C</span>
+                            <span>Base de données</span>
+                            <span>Interface utilisateur</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="magasin">Voir détails</button>
+                    </div>
+                </div>
+            -->
+                <div class="project-card" 
+                data-category="python"
+                data-id="probabilite">
+                    <div class="project-img">
+                        <img src="Images/tontine.jpg" alt="Analyse de Données">
+                    </div>
+                    <div class="project-info">
+                        <h3>Analyse stochastique d'une tontine</h3>
+                        <p>Projet Python d'analyse et de simulation de l'évolution d'une tontine</p>
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Matplotlib</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="probabilite">Voir détails</button>
+                    </div>
+                </div>
+                <div class="project-card"
+                 data-category="web"
+                 data-id="site">
+                    <div class="project-img">
+                        <img src="Images/portfolio.png" alt="Site Vitrine École">
+                    </div>
+                    <div class="project-info">
+                        <h3>Mon portfolio</h3>
+                        <p>Conception d'un portfolio afin de me vendre davantage</p>
+                        <div class="project-tags">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive Design</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="site">Voir détails</button>
+                    </div>
+                </div>
+                <div class="project-card"
+                data-category="c"
+                data-id="tontine">
+                    <div class="project-img">
+                        <img src="Images/argent.jpg" alt="IA pour Jeu">
+                    </div>
+                    <div class="project-info">
+                        <h3>Programme de gestion d'une tontine</h3>
+                        <p>Développement d'un programme permettant de faire interagir des membres dans le cadre d'une tontine</p>
+                        <div class="project-tags">
+                            <span>C</span>
+                            <span>Algorithmes</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="tontine">Voir détails</button>
+                    </div>
+                </div>    
+                <div class="project-card"
+                 data-category="c"
+                 data-id="jeu">
+                    <div class="project-img">
+                        <img src="Images/bataille_reelle.webp" alt="IA pour Jeu">
+                    </div>
+                    <div class="project-info">
+                        <h3>Jeu de bataille navale en console</h3>
+                        <p>Développement d'un jeu de bataille navale sur 3 niveaux de mer en langage c</p>
+                        <div class="project-tags">
+                            <span>C</span>
+                            <span>Algorithmes</span>
+                        </div>
+                        <button class="project-details-btn" data-project-id="jeu">Voir détails</button>
+                    </div>
+                </div>   
+            </div>
+        </div>
+    </section>
+
+    <div class="project-modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Me contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informations de contact</h3>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>alexiswaffo05@gmail.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+237 690675160</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Paris-Vélizy, France</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="www.linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/alex-codex/" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envoyez-moi un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">NOM</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">Envoyer</button>
+                    </form>
+                    <div id="formStatus"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Portfolio - Alexis Waffo. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#a-propos">À propos</a>
+                <a href="#projets">Projets</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
