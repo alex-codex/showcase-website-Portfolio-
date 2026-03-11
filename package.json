@@ -1,7 +1,8 @@
 {
   "name": "alternance_pour_tous",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "scripts": {
+   "build": "echo 'no build script'"
   }
 }

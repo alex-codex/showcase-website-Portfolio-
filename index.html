@@ -40,7 +40,7 @@
             <div class="hero-content">
                 <h1>Alexis Waffo</h1>
                 <h2>Futur Ingénieur ESEO Paris-Vélizy</h2>
-                <p class="tagline">À la recherche d'une alternance de 2 ans en conception, modélisation ou simulation</p>
+                <p class="tagline">À la recherche d'une alternance de 3 ans en Développement logiciel</p>
                 <div class="cta-buttons">
                     <a href="#projets" class="btn primary">Voir mes projets</a>
                     <a href="#contact" class="btn secondary">Me contacter</a>
@@ -60,46 +60,26 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Mon parcours</h3>
-                    <p>Actuellement étudiant en cycle ingénieur à ESEO Vélizy (BAC+3), je suis passionné par l'électronique et les nouvelles technologies, je recherche une alternance de 2 ans dès Septembre 2026 pour mettre en pratique mes connaissances et développer mes compétences en entreprise.</p>
+                    <p>Actuellement étudiant en classe préparatoire intégrée (Prépas Internationales), je m'apprête à intégrer l'école d'ingénieur ESEO Paris-Vélizy à la rentrée prochaine. Passionné par le développement logiciel et les nouvelles technologies, je recherche une alternance de 3 ans pour mettre en pratique mes connaissances et développer mes compétences en entreprise.</p>
                     
                     <h3>Mon projet d'alternance</h3>
-                    <p>Je souhaite rejoindre une entreprise innovante dans le secteur de l'industrie pour une alternance de 2 ans. Mon objectif est de contribuer à des projets concrets tout en poursuivant ma formation d'ingénieur à l'ESEO. Je suis particulièrement intéressé par les systèmes embarqués et la simulation.</p>
+                    <p>Je souhaite rejoindre une entreprise innovante dans le secteur du développement logiciel pour une alternance de 3 ans. Mon objectif est de contribuer à des projets concrets tout en poursuivant ma formation d'ingénieur à l'ESEO. Je suis particulièrement intéressé par le développement applicatif, ainsi que par la modélisation des données.</p>
+                    <h3 style="margin-top: 30px;">Mes Certifications</h3>
+                    <ul class="certifications-list">
+                        <li><i class="fas fa-award"></i> <strong>TOEIC</strong> - Niveau B2 (Score: à préciser)</li>
+                        <li><i class="fas fa-award"></i> <strong>PIX</strong> - Certification des compétences numériques</li>
+                        <li><i class="fas fa-award"></i> <strong>Certification Informatique</strong> - (Ex: SecNumacadémie / Cisco / etc.)</li>
+                    </ul>
                 </div>
                 <div class="skills">
                     <h3>Mes compétences</h3>
                     <div class="skill-category">
                         <h4>Langages de programmation</h4>
                         <div class="skill-items">
-                            <div class="skill-item">
-                                <span>HTML/CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 50%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 15%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>Python</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 70%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span>C</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 80%"></div>
-                                </div>
-                            </div>
-                             <div class="skill-item">
-                                <span>C++</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 20%"></div>
-                                </div>
-                            </div>
+                            <div class="skill-item"><span>HTML/CSS</span></div>
+                            <div class="skill-item"><span>JavaScript</span></div>
+                            <div class="skill-item"><span>Python</span></div>
+                            <div class="skill-item"><span>C</span></div>
                         </div>
                     </div>
                     <div class="skill-category">
@@ -130,9 +110,10 @@
             <div class="project-filters">
                 <button class="filter-btn active" data-filter="all">Tous</button>
                 <button class="filter-btn" data-filter="arduino">Arduino</button>
-                <button class="filter-btn" data-filter="c">C</button>
-                <button class="filter-btn" data-filter="python">Python</button>
-                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="embarque">Embarqué / FPGA</button>
+                <button class="filter-btn" data-filter="electronique">Électronique</button>
+                <button class="filter-btn" data-filter="informatique">Info / Web / BDD</button>
+                <button class="filter-btn" data-filter="matlab">MATLAB</button>
             </div>
             <div class="projects-grid">
                 <div class="project-card"
@@ -253,7 +234,134 @@
                         </div>
                         <button class="project-details-btn" data-project-id="jeu">Voir détails</button>
                     </div>
-                </div>   
+                </div> 
+                <div class="project-card" data-category="embarque" data-id="hiker-stm32">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/STM32%20Hiker" alt="Projet Hiker STM32">
+    </div>
+    <div class="project-info">
+        <h3>Projet Hiker (Carte STM32)</h3>
+        <p>Détection de randonneurs et gestion d'événements inattendus avec machine à états.</p>
+        <div class="project-tags">
+            <span>STM32</span>
+            <span>C (Bas Niveau)</span>
+            <span>Registres</span>
+        </div>
+        <button class="project-details-btn" data-project-id="hiker-stm32">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="embarque" data-id="fpga-microonde">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/FPGA%20Basys3" alt="Simulateur FPGA">
+    </div>
+    <div class="project-info">
+        <h3>Simulateur Micro-ondes FPGA</h3>
+        <p>Conception d'un circuit numérique sur carte Basys 3 avec graphe et machine à états.</p>
+        <div class="project-tags">
+            <span>FPGA</span>
+            <span>Basys 3</span>
+            <span>VHDL/Verilog</span>
+        </div>
+        <button class="project-details-btn" data-project-id="fpga-microonde">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="electronique" data-id="elec-analogique">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Elec%20Analogique" alt="Électronique Analogique">
+    </div>
+    <div class="project-info">
+        <h3>Détection de proximité (Capteur US)</h3>
+        <p>Simulation analogique et conversion de largeur d'impulsion pour affichage sur bargraph.</p>
+        <div class="project-tags">
+            <span>Analogique</span>
+            <span>Capteur US</span>
+            <span>Simulation</span>
+        </div>
+        <button class="project-details-btn" data-project-id="elec-analogique">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="informatique" data-id="arch-si">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Logisim" alt="Logisim Assembleur">
+    </div>
+    <div class="project-info">
+        <h3>Conception Ordinateur (Bas Niveau)</h3>
+        <p>Architecture d'un ordinateur sur Logisim et programmation en langage assembleur.</p>
+        <div class="project-tags">
+            <span>Logisim</span>
+            <span>Assembleur</span>
+            <span>Architecture SI</span>
+        </div>
+        <button class="project-details-btn" data-project-id="arch-si">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="matlab" data-id="traitement-signal">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Matlab%20Image" alt="Traitement Image">
+    </div>
+    <div class="project-info">
+        <h3>Traitement Numérique d'Image</h3>
+        <p>Segmentation, produit de convolution, calcul de gradient et laplacien des pixels.</p>
+        <div class="project-tags">
+            <span>MATLAB</span>
+            <span>TNS</span>
+            <span>Mathématiques</span>
+        </div>
+        <button class="project-details-btn" data-project-id="traitement-signal">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="electronique" data-id="elec-puissance">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Elec%20Puissance" alt="Alimentation Elec">
+    </div>
+    <div class="project-info">
+        <h3>Design Fonction Alimentation</h3>
+        <p>Conception et implémentation MATLAB de systèmes d'alimentation électrique.</p>
+        <div class="project-tags">
+            <span>Génie Électrique</span>
+            <span>MATLAB</span>
+            <span>Puissance</span>
+        </div>
+        <button class="project-details-btn" data-project-id="elec-puissance">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="informatique" data-id="bdd-serveur">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/SQL%20Apache" alt="Serveur Apache">
+    </div>
+    <div class="project-info">
+        <h3>Déploiement Serveur & SQL</h3>
+        <p>Création de base de données relationnelle et gestion backend d'un serveur Apache.</p>
+        <div class="project-tags">
+            <span>SQL</span>
+            <span>Apache</span>
+            <span>Backend</span>
+        </div>
+        <button class="project-details-btn" data-project-id="bdd-serveur">Voir détails</button>
+    </div>
+</div>
+
+<div class="project-card" data-category="informatique" data-id="poo-academique">
+    <div class="project-img">
+        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/POO" alt="Projet POO">
+    </div>
+    <div class="project-info">
+        <h3>Projet de Programmation Orientée Objet</h3>
+        <p>Application académique implémentant les concepts avancés de la POO.</p>
+        <div class="project-tags">
+            <span>POO</span>
+            <span>Java / C++</span>
+            <span>Architecture Logicielle</span>
+        </div>
+        <button class="project-details-btn" data-project-id="poo-academique">Voir détails</button>
+    </div>
+</div>  
             </div>
         </div>
     </section>
@@ -268,7 +376,7 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Me contacter</h2>
+            <h2 class="section-title">Mon profil vous interesse ?</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Informations de contact</h3>
@@ -278,7 +386,7 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <p>+33 745-948-458</p>
+                        <p>+237 690675160</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
@@ -288,7 +396,6 @@
                         <a href="www.linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/alex-codex/" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://wa.me/qr/SZ23ID5F6K7KP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-              
                     </div>
                 </div>
                 <div class="contact-form">

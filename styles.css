@@ -276,16 +276,18 @@ header .container {
 
 /* Hero Section */
 .hero {
-  height: 100vh;
+  height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-    url("https://placeholder.pics/svg/1920x1080/DEDEDE/555555/Background") no-repeat center center / cover;
+  /* Modification du background ici : opacité réduite à 0.6 et ajout de ton image */
+  background:linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)),
+    url("Images/portrait_banniere2.jpg") no-repeat center center / cover;
   position: relative;
-  padding: 0 20px; /* Ajout de padding horizontal */
+  padding: 0 20px;
+  margin-top: 60px;
 }
 
 .hero-content {
@@ -397,18 +399,7 @@ header .container {
   font-weight: 500;
 }
 
-.skill-bar {
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.skill-level {
-  height: 100%;
-  background-color: var(--secondary-color);
-  border-radius: 5px;
-}
+/* ...existing code... */
 
 .skill-tags {
   display: flex;
@@ -742,7 +733,8 @@ footer .container {
 
 @media (max-width: 768px) {
   .nav-links {
-    position: absolute;
+    position:fixed;
+    z-index: 1000;
     right: 0;
     top: 70px;
     background-color: white;
@@ -864,8 +856,10 @@ body.dark-mode .burger div {
 }
 
 body.dark-mode .hero {
-  background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)),
-    url("https://placeholder.pics/svg/1920x1080/121212/555555/Background") no-repeat center center / cover;
+  /* Modification du background mode sombre : filtre noir à 0.7 et ton image */
+  height: 65vh;
+  background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)),
+    url("Images/portrait_banniere2.jpg") no-repeat 50% 50% / cover;
 }
 
 body.dark-mode .hero h1 {
@@ -912,13 +906,7 @@ body.dark-mode .skill-tag {
   color: var(--dark-text);
 }
 
-body.dark-mode .skill-bar {
-  background-color: #3a3a3a;
-}
-
-body.dark-mode .skill-level {
-  background-color: var(--dark-secondary-color);
-}
+/* ...existing code... */
 
 body.dark-mode .projects {
   background-color: var(--dark-bg);
@@ -1028,4 +1016,44 @@ body.dark-mode #formStatus.error {
   background-color: #3e1f1f;
   color: #e6a8a8;
   border-color: #6a2d2d;
+}
+/* Style pour les certifications */
+.certifications-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.certifications-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.certifications-list li:hover {
+  transform: translateX(5px);
+  background-color: var(--light-color);
+  border-left: 4px solid var(--secondary-color);
+}
+
+.certifications-list i {
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+/* Compatibilité Mode Sombre pour les Certifications */
+body.dark-mode .certifications-list li {
+  background-color: var(--dark-bg);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+}
+
+body.dark-mode .certifications-list li:hover {
+  background-color: var(--dark-tag-bg);
+  border-left: 4px solid var(--dark-secondary-color);
 }
