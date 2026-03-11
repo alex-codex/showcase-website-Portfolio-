@@ -1,3 +1,138 @@
+/* Accentuation des couleurs et effets visuels */
+.about, .projects, .contact {
+  background: linear-gradient(120deg, #f9f9f9 80%, #e74c3c11 100%);
+  border-radius: 32px 32px 0 0 / 16px 16px 0 0;
+  box-shadow: 0 8px 32px #e74c3c11, 0 2px 8px #3498db11;
+  margin-bottom: 40px;
+}
+
+.about {
+  border-left: 8px solid #e74c3c33;
+}
+.projects {
+  border-right: 8px solid #3498db33;
+}
+.contact {
+  border-left: 8px solid #f1c40f33;
+}
+
+footer {
+  background: linear-gradient(90deg, #e74c3c 0%, #3498db 100%);
+  color: #fff;
+  box-shadow: 0 -4px 24px #e74c3c22;
+}
+
+footer .footer-links a {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 1px 4px #2c3e5044;
+}
+footer .footer-links a:hover {
+  color: #f1c40f;
+}
+/* Animation artistique sur les cartes projets */
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: radial-gradient(circle at 60% 40%, #e74c3c33 0%, #3498db22 60%, transparent 100%);
+  opacity: 0.7;
+  z-index: 0;
+  transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s;
+  pointer-events: none;
+}
+.project-card:hover::before {
+  transform: scale(1.15) rotate(8deg);
+  opacity: 1;
+}
+.project-card .project-info, .project-card .project-img {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animation sur les boutons principaux */
+.btn.primary, .btn.secondary {
+  box-shadow: 0 2px 12px #e74c3c22, 0 1px 4px #3498db22;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.btn.primary:hover, .btn.secondary:hover {
+  box-shadow: 0 6px 24px #e74c3c44, 0 2px 8px #3498db44;
+  transform: scale(1.07) rotate(-2deg);
+}
+
+/* Animation d'apparition artistique sur les sections */
+section {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  animation: sectionFadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  animation-delay: 0.3s;
+}
+section:nth-of-type(2) { animation-delay: 0.6s; }
+section:nth-of-type(3) { animation-delay: 0.9s; }
+section:nth-of-type(4) { animation-delay: 1.2s; }
+
+@keyframes sectionFadeIn {
+  0% { opacity: 0; transform: translateY(60px) scale(0.98); }
+  80% { opacity: 1; transform: translateY(-8px) scale(1.03); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+/* Typographie artistique pour le titre */
+.titre-artistique {
+  font-family: 'Pacifico', cursive;
+  font-size: 4rem;
+  color: #e74c3c;
+  letter-spacing: 2px;
+  text-shadow: 2px 4px 16px #f1c40f99, 0 2px 8px #3498db55;
+  margin-bottom: 0.5em;
+  animation: titreFadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.sous-titre-artistique {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  color: #3498db;
+  letter-spacing: 1px;
+  margin-bottom: 1.5em;
+  text-shadow: 1px 2px 8px #e74c3c33;
+  animation: titreFadeIn 1.8s 0.2s cubic-bezier(.68,-0.55,.27,1.55) backwards;
+}
+
+@keyframes titreFadeIn {
+  0% { opacity: 0; transform: translateY(-40px) scale(0.9) rotate(-3deg); }
+  80% { opacity: 1; transform: translateY(10px) scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+/* Fond artistique SVG */
+.art-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.art-svg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+body > *:not(.art-bg) {
+  position: relative;
+  z-index: 1;
+}
 /* Variables et reset */
 :root {
   --primary-color: #2c3e50;
