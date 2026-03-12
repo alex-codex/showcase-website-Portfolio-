@@ -115,6 +115,118 @@ document.addEventListener("DOMContentLoaded", () => {
       challenges:
         "La gestion des coordonnées du plateau et la vérification des conditions de victoire ont présenté des défis algorithmiques. J'ai utilisé des matrices pour représenter les plateaux et des fonctions modulaires pour les différentes phases du jeu, rendant le code plus gérable et lisible.",
     },
+    {
+      id: "hiker-stm32",
+      category: "embarque",
+      title: "Projet Hiker (Carte STM32)",
+      desc: "Programmation bas niveau sur microcontrôleur STM32 pour détecter le passage de randonneurs devant un capteur. Implémentation d'une machine à états robuste pour gérer les situations inattendues (ex: chute d'arbre) et mise à jour dynamique de la distance de considération.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/STM32%20Hiker",
+      tags: ["C", "STM32", "Registres", "Machine à états", "Bas Niveau"],
+      features: [
+        "Détection de passage via capteurs",
+        "Manipulation directe des registres matériels",
+        "Gestion des interruptions et situations inattendues",
+      ],
+      challenges: "Le défi principal a été de gérer la complexité de l'environnement physique (fausses détections, obstacles) grâce à une machine à états stricte et une programmation bas niveau rigoureuse."
+    },
+    {
+      id: "elec-analogique",
+      category: "electronique",
+      title: "Simulation Détection de Proximité (US)",
+      desc: "Conception et simulation d'une fonction de détection de proximité utilisant un capteur à ultrasons. Le projet inclut la conversion de la largeur d'impulsion pour un affichage dynamique et visuel sur un bargraph à LED.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/Elec%20Analogique",
+      tags: ["Électronique Analogique", "Simulation", "Capteurs US", "Bargraph LED"],
+      features: [
+        "Simulation de signal de capteur à ultrasons",
+        "Conversion largeur d'impulsion",
+        "Interfaçage avec un bargraph LED",
+      ],
+      challenges: "Calibrer précisément le circuit analogique pour que la conversion de l'impulsion reflète fidèlement la distance physique sur l'affichage LED."
+    },
+    {
+      id: "fpga-microonde",
+      category: "embarque",
+      title: "Simulateur Micro-ondes sur FPGA",
+      desc: "Conception d'un circuit numérique complexe sur carte FPGA Basys 3 pour simuler le comportement d'un four à micro-ondes. Le projet a nécessité une description matérielle minutieuse et la création d'un graphe d'états.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/FPGA%20Basys3",
+      tags: ["FPGA", "Basys 3", "Description Matérielle", "Circuit Numérique"],
+      features: [
+        "Description matérielle (VHDL/Verilog)",
+        "Élaboration de graphe et machine à états",
+        "Programmation et test sur cible réelle",
+      ],
+      challenges: "Traduire des comportements fonctionnels complexes en logique séquentielle et combinatoire fiable."
+    },
+    {
+      id: "elec-puissance",
+      category: "electronique",
+      title: "Design de Fonction Alimentation",
+      desc: "Études approfondies et livrables sur la conception de systèmes d'alimentation dans le cadre du cours de génie électrique. Implémentation et analyse des performances sur MATLAB.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/Elec%20Puissance",
+      tags: ["Électronique de Puissance", "MATLAB", "Génie Électrique", "Alimentation"],
+      features: [
+        "Design de circuits d'alimentation",
+        "Simulation de composants de puissance",
+        "Analyse de rendement et de stabilité",
+      ],
+      challenges: "Modéliser fidèlement les pertes thermiques et électriques dans l'environnement MATLAB pour obtenir des simulations proches du réel."
+    },
+    {
+      id: "arch-si",
+      category: "informatique",
+      title: "Conception d'un Ordinateur (Logisim)",
+      desc: "Compréhension de l'architecture d'un système d'information par la conception complète d'un ordinateur au plus bas niveau en utilisant l'outil Logisim, accompagnée d'exercices de programmation en langage Assembleur.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/Logisim",
+      tags: ["Logisim", "Assembleur", "Architecture Ordinateur", "Portes Logiques"],
+      features: [
+        "Création de composants (ALU, Registres, Mémoire)",
+        "Conception du chemin de données",
+        "Programmation d'instructions en Assembleur",
+      ],
+      challenges: "Connecter et synchroniser parfaitement tous les bus de données et signaux de contrôle d'horloge pour que le processeur exécute le code correctement."
+    },
+    {
+      id: "traitement-signal",
+      category: "matlab",
+      title: "Traitement Numérique de l'Image",
+      desc: "Projet MATLAB axé sur le traitement numérique du signal appliqué à l'image. Compréhension approfondie des pixels à travers des opérations mathématiques complexes.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/Matlab%20Image",
+      tags: ["MATLAB", "Traitement d'Image", "Segmentation", "Filtres Mathématiques"],
+      features: [
+        "Opérations de segmentation d'image",
+        "Application de produits de convolution",
+        "Calculs de gradient et traitement Laplacien",
+      ],
+      challenges: "Optimiser les matrices de calcul sur MATLAB pour appliquer des filtres lourds (Laplacien) sans temps de latence excessif."
+    },
+    {
+      id: "bdd-serveur",
+      category: "informatique",
+      title: "Déploiement Serveur et Base de Données",
+      desc: "Mise en place d'une infrastructure back-end solide incluant le déploiement d'un serveur sous Apache et la gestion complète d'une base de données relationnelle via SQL.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/SQL%20Apache",
+      tags: ["SQL", "Apache", "Backend", "Base de Données Relationnelle"],
+      features: [
+        "Modélisation conceptuelle et logique (MCD/MLD)",
+        "Création de requêtes SQL complexes",
+        "Configuration et déploiement de serveur web",
+      ],
+      challenges: "Assurer la sécurité des accès à la base de données et la bonne configuration d'Apache pour le routage des requêtes."
+    },
+    {
+      id: "poo-academique",
+      category: "informatique",
+      title: "Programmation Orientée Objet",
+      desc: "Projet académique permettant de valider les compétences en modélisation et développement objet. Création de classes, gestion de l'héritage et du polymorphisme pour résoudre un problème algorithmique.",
+      img: "https://placeholder.pics/svg/600x400/DEDEDE/555555/POO",
+      tags: ["POO", "Java/C++", "UML", "Architecture Logicielle"],
+      features: [
+        "Modélisation UML des classes",
+        "Implémentation des piliers de la POO (Encapsulation, Héritage...)",
+        "Gestion optimisée de la mémoire",
+      ],
+      challenges: "Concevoir une architecture évolutive sans créer un couplage trop fort entre les différentes classes de l'application."
+    },
   ]
 
   // Navigation menu toggle
@@ -215,42 +327,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   projectDetailsBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Récupérer l'ID du projet à partir du bouton (attribut data-project-id que vous devez ajouter dans le HTML)
+      console.log("Bouton 'Voir détails' cliqué", btn);
       const projectId = btn.getAttribute("data-project-id");
-      // Trouver le projet correspondant dans le tableau projectData
+      console.log("ID du projet:", projectId);
       const project = projectData.find((p) => p.id === projectId);
-
-      if (project) {
-        // Mettre à jour le contenu de la modale avec les données du projet
-        modalBody.innerHTML = `
-          <div class="modal-header">
-              <h2>${project.title}</h2>
-          </div>
-          <div class="modal-img">
-              <img src="${project.img}" alt="${project.title}">
-          </div>
-          <div class="modal-desc">
-              <h3>Description</h3>
-              <p>${project.desc}</p>
-              <h3>Technologies utilisées</h3>
-              <div class="project-tags">
-                  ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-              </div>
-              <h3>Fonctionnalités</h3>
-              <div class="project-tags">
-                  ${project.features.map(feature => `<p class="feature-item">${feature}</p>`).join('')}
-              </div>
-              <h3>Défis et solutions</h3>
-              <div class="project-tags">
-                  <p>${project.challenges}</p>
-              </div>
-          </div>
-        `;
-
-        // Afficher la modale
-        projectModal.style.display = "block";
-        document.body.style.overflow = "hidden"; // Empêche le défilement du body
+      if (!project) {
+      console.warn("Projet non trouvé pour l'ID:", projectId);
+      modalBody.innerHTML = `<p style='color:red;'>Projet non trouvé pour l'ID: ${projectId}</p>`;
+      projectModal.style.display = "block";
+      return;
       }
+      console.log("Projet trouvé:", project);
+      modalBody.innerHTML = `
+      <div class="modal-header">
+        <h2>${project.title}</h2>
+      </div>
+      <div class="modal-img">
+        <img src="${project.img}" alt="${project.title}">
+      </div>
+      <div class="modal-desc">
+        <h3>Description</h3>
+        <p>${project.desc}</p>
+        <h3>Technologies utilisées</h3>
+        <div class="project-tags">
+          ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <h3>Fonctionnalités</h3>
+        <div class="project-tags">
+          ${project.features.map(feature => `<p class="feature-item">${feature}</p>`).join('')}
+        </div>
+        <h3>Défis et solutions</h3>
+        <div class="project-tags">
+          <p>${project.challenges}</p>
+        </div>
+      </div>
+      `;
+      projectModal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      console.log("Modal affichée.");
     });
   });
 
@@ -290,17 +404,34 @@ document.addEventListener("DOMContentLoaded", () => {
       return
     }
 
-    // Simulate form submission
-    formStatus.textContent = "Envoi en cours..."
-    formStatus.className = ""
-    formStatus.style.display = "block"
-
-    // Simulate API call
-    setTimeout(() => {
-      formStatus.textContent = "Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais."
-      formStatus.className = "success"
-      contactForm.reset()
-    }, 1500)
+    // Envoi réel du formulaire via Formspree (remplacez par votre endpoint Formspree)
+    fetch('https://formspree.io/f/xnjgadvy', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.ok) {
+          formStatus.textContent = "Votre message a été envoyé avec succès. Je vous répondrai dans les plus brefs délais."
+          formStatus.className = "success"
+          contactForm.reset()
+        } else {
+          formStatus.textContent = "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
+          formStatus.className = "error"
+        }
+      })
+      .catch(() => {
+        formStatus.textContent = "Une erreur est survenue lors de l'envoi. Veuillez réessayer."
+        formStatus.className = "error"
+      })
   })
 
   
