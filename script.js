@@ -1,141 +1,334 @@
-const PROJECTS = [
-  {
-    id: "sonar",
-    category: "arduino",
-    title: "SONAR Arduino",
-    subtitle: "Acquisition & Visualisation temps réel",
-    img: "Images/sonar.jpg",
-    tags: ["Arduino", "Python", "Matplotlib", "Capteurs US"],
-    year: "2025",
-    desc: "Système SONAR balayant 180° avec visualisation graphique Python en temps réel. Pipeline complet : acquisition série C++, traitement et rendu animé des distances.",
-    features: ["Balayage angulaire 180° servomoteur", "Communication série Arduino ↔ Python", "Visualisation live Matplotlib", "Détection anomalies distance"],
-    challenges: "Synchroniser la communication série sans latence perceptible. Résolu via buffering et protocole léger."
-  },
-  {
-    id: "tontine-python",
-    category: "data",
-    title: "Modélisation Stochastique",
-    subtitle: "Simulation financière Monte-Carlo",
-    img: "Images/tontine.jpg",
-    tags: ["Python", "NumPy", "Pandas", "Matplotlib"],
-    year: "2025",
-    desc: "Pipeline d'analyse stochastique d'une tontine : simulation Monte-Carlo de +10 000 scénarios, modélisation des flux financiers et restitution visuelle des risques.",
-    features: ["Simulation Monte-Carlo paramétrable", "Agrégation et analyse Pandas", "Visualisations Matplotlib/Seaborn", "Export structuré des résultats"],
-    challenges: "Modéliser les aspects stochastiques tout en gardant un pipeline reproductible et des résultats interprétables."
-  },
-  {
-    id: "fpga-microonde",
-    category: "embarque",
-    title: "Simulateur Micro-ondes FPGA",
-    subtitle: "Basys 3 · VHDL · FSM",
-    img: null,
-    tags: ["FPGA", "VHDL", "Basys 3", "Machine à états"],
-    year: "2025",
-    desc: "Conception d'un circuit numérique complet sur FPGA Basys 3 simulant un four micro-onde. Élaboration du cahier des charges, FSM, description matérielle VHDL.",
-    features: ["Modélisation FSM complète", "Description matérielle VHDL", "Test sur cible réelle", "Cahier des charges élaboré"],
-    challenges: "Traduire des comportements fonctionnels complexes en logique séquentielle fiable et testable sur cible."
-  },
-  {
-    id: "hiker-stm32",
-    category: "embarque",
-    title: "Projet Hiker STM32",
-    subtitle: "C bas niveau · Registres · FSM",
-    img: null,
-    tags: ["STM32", "C bas niveau", "Registres", "FSM"],
-    year: "2025",
-    desc: "Détection de randonneurs via microcontrôleur STM32. Programmation directe des registres, machine à états robuste pour gestion d'événements inattendus.",
-    features: ["Accès direct registres matériels", "Machine à états de contrôle", "Gestion des interruptions", "Détection événements inattendus"],
-    challenges: "Gérer les fausses détections physiques avec une FSM stricte et une programmation bas niveau rigoureuse."
-  },
-  {
-    id: "robot-obstacle",
-    category: "arduino",
-    title: "Robot Évitement d'Obstacles",
-    subtitle: "Arduino · Capteurs · Autonomie",
-    img: "Images/arduino.png",
-    tags: ["Arduino", "Capteurs ultrason", "Moteurs DC"],
-    year: "2024",
-    desc: "Robot autonome naviguant en détectant et évitant les obstacles via capteurs ultrasoniques. Algorithme adaptatif pour navigation fluide.",
-    features: ["Détection obstacles temps réel", "Algorithme décision adaptatif", "Contrôle précis des moteurs", "Navigation autonome"],
-    challenges: "Optimiser les seuils capteurs pour une navigation fluide dans des environnements variés."
-  },
-  {
-    id: "bataille-navale",
-    category: "dev",
-    title: "Bataille Navale Console",
-    subtitle: "Langage C · Algorithmes",
-    img: "Images/bataille_reelle.webp",
-    tags: ["C", "Algorithmes", "Matrices"],
-    year: "2024",
-    desc: "Jeu de bataille navale en console, 3 niveaux de difficulté, placement manuel ou automatique, système de tir et détection touché/coulé.",
-    features: ["3 niveaux de difficulté", "Placement manuel/automatique", "Système touché/coulé", "Tour par tour"],
-    challenges: "Gestion des coordonnées et conditions de victoire via matrices et fonctions modulaires."
-  },
-  {
-    id: "tontine-c",
-    category: "dev",
-    title: "Gestion de Tontine",
-    subtitle: "Langage C · Structures de données",
-    img: "Images/argent.jpg",
-    tags: ["C", "Algorithmes", "Gestion données"],
-    year: "2024",
-    desc: "Programme C gérant les interactions entre membres d'une tontine : cotisations, distributions, historique des transactions.",
-    features: ["Gestion profils membres", "Suivi des paiements", "Planification distributions", "Historique transactions"],
-    challenges: "Robustesse face aux entrées inattendues et intégrité des données sur toute la durée de vie du programme."
-  },
-  {
-    id: "portfolio",
-    category: "dev",
-    title: "Mon Portfolio",
-    subtitle: "HTML · CSS · JavaScript",
-    img: "Images/portfolio.png",
-    tags: ["HTML5", "CSS3", "JavaScript", "Responsive"],
-    year: "2025",
-    desc: "Conception et développement du portfolio personnel : animations avancées, dark mode, filtres projets, formulaire de contact intégré.",
-    features: ["Dark mode persistant", "Filtres projets animés", "Formulaire Formspree", "Responsive complet"],
-    challenges: "Assurer la responsivité et les animations sur tous les appareils tout en maintenant les performances."
-  }
-];
+/* ═══════════════════════════════════════════════
+   PARTICLES
+═══════════════════════════════════════════════ */
+(function () {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, dots = [];
 
-const TIMELINE = [
-  {
-    year: "2023",
-    title: "Baccalauréat Scientifique",
-    subtitle: "Collège Saint-Cœur de Marie",
-    detail: "Mention Bien — 15,23 / 20",
-    icon: "🎓",
-    color: "#64b5f6"
-  },
-  {
-    year: "2023 — 2025",
-    title: "Classes Préparatoires Intégrées",
-    subtitle: "Prépas Internationales, Yaoundé",
-    detail: "Top 2 de la promotion · Projets Arduino, FPGA, simulations",
-    icon: "⚙️",
-    color: "#4db6ac"
-  },
-  {
-    year: "2024",
-    title: "Stage — INFOGENIE TECHNOLOGIE",
-    subtitle: "Yaoundé, Cameroun",
-    detail: "Déploiement réseau, collecte et analyse de données de surveillance",
-    icon: "💼",
-    color: "#f06292"
-  },
-  {
-    year: "Sept. 2025",
-    title: "Cycle Ingénieur — 1ère année",
-    subtitle: "ESEO Paris-Vélizy",
-    detail: "Spécialisation Data & IA · STM32, FPGA, pipelines Python",
-    icon: "🚀",
-    color: "#ba68c8"
-  },
-  {
-    year: "2026 →",
-    title: "Recherche d'alternance",
-    subtitle: "Data · Embarqué · Électronique",
-    detail: "Disponible dès septembre 2026 · Rythme 2 sem. / 2 sem.",
-    icon: "🎯",
-    color: "#ffb74d"
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
-];
+
+  function createDots(n) {
+    dots = [];
+    for (let i = 0; i < n; i++) {
+      dots.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.2 + 0.3,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        alpha: Math.random() * 0.5 + 0.1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    dots.forEach(d => {
+      d.x += d.vx;
+      d.y += d.vy;
+      if (d.x < 0 || d.x > W) d.vx *= -1;
+      if (d.y < 0 || d.y > H) d.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(56,189,248,${d.alpha})`;
+      ctx.fill();
+    });
+
+    // lignes entre points proches
+    for (let i = 0; i < dots.length; i++) {
+      for (let j = i + 1; j < dots.length; j++) {
+        const dx = dots[i].x - dots[j].x;
+        const dy = dots[i].y - dots[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(dots[i].x, dots[i].y);
+          ctx.lineTo(dots[j].x, dots[j].y);
+          ctx.strokeStyle = `rgba(56,189,248,${0.06 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); createDots(80); });
+  resize();
+  createDots(80);
+  draw();
+})();
+
+/* ═══════════════════════════════════════════════
+   HEADER — hide/show on scroll
+═══════════════════════════════════════════════ */
+let lastScroll = 0;
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+  const cur = window.scrollY;
+  if (cur > lastScroll && cur > 80) {
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    header.style.transform = 'translateY(0)';
+  }
+  lastScroll = cur <= 0 ? 0 : cur;
+});
+
+/* ═══════════════════════════════════════════════
+   BURGER MENU
+═══════════════════════════════════════════════ */
+const burger    = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   AOS — animate on scroll
+═══════════════════════════════════════════════ */
+function initAOS() {
+  const els = document.querySelectorAll('[data-aos]');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('aos-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════ */
+function buildTimeline() {
+  const track = document.getElementById('timelineTrack');
+  if (!track) return;
+
+  TIMELINE.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'tl-item';
+    el.style.transitionDelay = `${i * 0.12}s`;
+    el.innerHTML = `
+      <div class="tl-dot" style="border-color:${item.color}; color:${item.color}">
+        ${item.icon}
+      </div>
+      <div class="tl-year" style="color:${item.color}">${item.year}</div>
+      <div class="tl-title">${item.title}</div>
+      <div class="tl-sub">${item.subtitle}</div>
+      <div class="tl-detail" style="border-color:${item.color}">${item.detail}</div>
+    `;
+    track.appendChild(el);
+  });
+
+  // Observer pour animer chaque item
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  track.querySelectorAll('.tl-item').forEach(el => obs.observe(el));
+}
+
+/* ═══════════════════════════════════════════════
+   PROJECTS
+═══════════════════════════════════════════════ */
+const CAT_LABELS = {
+  data:     'Data',
+  embarque: 'Embarqué',
+  arduino:  'Arduino',
+  dev:      'Dev / Web'
+};
+
+const CAT_ICONS = {
+  data:     '📊',
+  embarque: '⚙️',
+  arduino:  '🤖',
+  dev:      '💻'
+};
+
+function buildProjects(filter = 'all') {
+  const grid = document.getElementById('projectsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const filtered = filter === 'all'
+    ? PROJECTS
+    : PROJECTS.filter(p => p.category === filter);
+
+  filtered.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'project-card';
+    card.style.animationDelay = `${i * 0.07}s`;
+    card.dataset.id = p.id;
+
+    const thumbHTML = p.img
+      ? `<img src="${p.img}" alt="${p.title}" loading="lazy" />`
+      : `<div class="pc-placeholder">${CAT_ICONS[p.category] || '🔧'}</div>`;
+
+    card.innerHTML = `
+      <div class="pc-thumb">
+        ${thumbHTML}
+        <span class="pc-year">${p.year}</span>
+      </div>
+      <div class="pc-body">
+        <div class="pc-cat">${CAT_LABELS[p.category] || p.category}</div>
+        <div class="pc-title">${p.title}</div>
+        <div class="pc-sub">${p.subtitle}</div>
+        <p class="pc-desc">${p.desc}</p>
+        <div class="pc-tags">
+          ${p.tags.map(t => `<span>${t}</span>`).join('')}
+        </div>
+        <button class="pc-btn">Voir le projet <i class="fas fa-arrow-right"></i></button>
+      </div>
+    `;
+
+    card.addEventListener('click', () => openModal(p));
+    grid.appendChild(card);
+  });
+}
+
+// Filtres
+document.querySelectorAll('.filt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildProjects(btn.dataset.filter);
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+const overlay     = document.getElementById('modalOverlay');
+const modalClose  = document.getElementById('modalClose');
+const modalContent = document.getElementById('modalContent');
+
+function openModal(p) {
+  const imgHTML = p.img
+    ? `<img src="${p.img}" alt="${p.title}" />`
+    : `<span style="font-size:3rem">${CAT_ICONS[p.category] || '🔧'}</span>`;
+
+  modalContent.innerHTML = `
+    <div class="modal-cat">${CAT_LABELS[p.category] || p.category} · ${p.year}</div>
+    <div class="modal-title">${p.title}</div>
+    <div class="modal-sub">${p.subtitle}</div>
+    <div class="modal-img">${imgHTML}</div>
+    <div class="modal-section">
+      <h4>Description</h4>
+      <p>${p.desc}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Fonctionnalités</h4>
+      <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-section">
+      <h4>Défis &amp; solutions</h4>
+      <p>${p.challenges}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Stack technique</h4>
+      <div class="modal-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+    </div>
+  `;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ═══════════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════════ */
+const contactForm = document.getElementById('contactForm');
+const formStatus  = document.getElementById('formStatus');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.textContent = 'Envoi…';
+    btn.disabled = true;
+
+    const data = {
+      name:    document.getElementById('name').value,
+      email:   document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+
+    try {
+      const res = await fetch('https://formspree.io/f/xnjgadvy', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (json.ok) {
+        formStatus.textContent = '✓ Message envoyé ! Je vous réponds rapidement.';
+        formStatus.className = 'success';
+        contactForm.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      formStatus.textContent = '✗ Erreur lors de l\'envoi. Réessayez ou écrivez directement par email.';
+      formStatus.className = 'error';
+    }
+
+    btn.innerHTML = 'Envoyer <i class="fas fa-arrow-right"></i>';
+    btn.disabled = false;
+  });
+}
+
+/* ═══════════════════════════════════════════════
+   SMOOTH SCROLL
+═══════════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      const offset = document.getElementById('header').offsetHeight;
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - offset,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  buildTimeline();
+  buildProjects();
+  initAOS();
+});
