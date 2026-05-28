@@ -1,440 +1,225 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Étudiant Ingénieur ESEO</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexis Waffo — Ingénieur ESEO</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">Portfolio</div>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#a-propos">À propos</a></li>
-                    <li><a href="#projets">Projets</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="theme-toggle">
-                <input type="checkbox" id="darkmode-toggle" class="darkmode-input">
-                <label for="darkmode-toggle" class="darkmode-label">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </label>
-            </div>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        </div>
-    </header>
 
-    <section id="accueil" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Alexis Waffo</h1>
-                <h2> Ingénieur ESEO Paris-Vélizy — 1ère année</h2>
-                <p class="tagline">À la recherche d'une alternance en Data, Embarqué & Électronique</p>
-                <div class="cta-buttons">
-                    <a href="#projets" class="btn primary">Voir mes projets</a>
-                    <a href="#contact" class="btn secondary">Me contacter</a>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#a-propos">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
+  <!-- ░░ CANVAS PARTICULES ░░ -->
+  <canvas id="particles"></canvas>
 
-    <section id="a-propos" class="about">
-        <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Mon parcours</h3>
-                    <p>Étudiant en 1ère année du cycle ingénieur à l'ESEO Paris-Vélizy, j'ai un background solide en mathématiques, structures de données et systèmes embarqués (FPGA, STM32, Arduino). Ce qui me caractérise : une capacité à connecter des domaines différents pour construire des solutions adaptées.</p>
-                    <h3>Mon projet d'alternance</h3>
-                    <p> Je cherche une alternance idéalement orientée Data, tout en restant ouvert à l'embarqué et à l'électronique. Mon objectif : contribuer à des projets concrets où rigueur technique et pensée transversale font la différence.</p>
-                    <h3 style="margin-top: 30px;">Mes Certifications</h3>
-                    <ul class="certifications-list">
-                        <li><i class="fas fa-award"></i> <strong>Python Programming</strong> - Meta - coursera </li>
-                        <li><i class="fas fa-award"></i> <strong>C++ Programming </strong></li>
-                        <li><i class="fas fa-award"></i> <strong>Introduction à la programmation avec MATLAB</strong></li>
-                        <li><i class="fas fa-award"></i> <strong>BIA</strong>-Brevet d'Initiation à l'Aviation</li>
-                    </ul>
-                </div>
-                <div class="skills">
-                    <h3>Mes compétences</h3>
-                    <div class="skill-category">
-                        <h4>Langages de programmation</h4>
-                        <div class="skill-items">
-                            <div class="skill-item"><span>HTML/CSS   JavaScript</span></div>
-                            <div class="skill-item"><span>VHDL</span></div>
-                            <div class="skill-item"><span>SQL</span></div>
-                            <div class="skill-item"><span>Python</span></div>
-                            <div class="skill-item"><span>C/C++</span></div>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Technologies</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag"> STM32  Arduino</span>          
-                            <span class="skill-tag">FPGA/ ViVado</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Microsoft Azure</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Soft Skills</h4>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Travail d'équipe</span>
-                            <span class="skill-tag">Résolution de problèmes</span>
-                            <span class="skill-tag">Autonomie</span>
-                            <span class="skill-tag">Adaptabilité</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ░░ HEADER ░░ -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#hero" class="logo-mark">AW<span>.</span></a>
+      <nav>
+        <a href="#about">À propos</a>
+        <a href="#timeline">Parcours</a>
+        <a href="#projects">Projets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about">À propos</a>
+      <a href="#timeline">Parcours</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
 
-    <section id="projets" class="projects">
-        <div class="container">
-            <h2 class="section-title">Mes projets</h2>
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="arduino">Arduino</button>
-                <button class="filter-btn" data-filter="embarque">Embarqué / FPGA</button>
-                <button class="filter-btn" data-filter="electronique">Électronique</button>
-                <button class="filter-btn" data-filter="informatique">Info / Web / BDD</button>
-                <button class="filter-btn" data-filter="matlab">MATLAB</button>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card"
-                 data-category="arduino" 
-                 data-id="Robot-d'Évitement-d'Obstacles" >
-                    <div class="project-img">
-                        <img src="Images/arduino.png" alt="Projet Robot Évitement d'Obstacles">
-                    </div>
-                    <div class="project-info" data-project-id="Robot-d'Évitement-d'Obstacles">
-                        <h3>Robot d'Évitement d'Obstacles</h3>
-                        <p>Développement d'un robot Arduino capable de détecter et d'éviter les obstacles sur son chemin.</p>
-                        <div class="project-tags">
-                            <span>Arduino</span>
-                            <span>Capteurs ultrason</span>
-                            <span>Moteurs</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="Robot-d'Évitement-d'Obstacles">Voir détails</button>
-                    </div>
-                </div>
-                <div class="project-card" 
-                data-category="arduino"
-                data-id="sonar">
-                    <div class="project-img">
-                        <img src="Images/sonar.jpg" alt="Projet Robot Arduino">
-                    </div>
-                    <div class="project-info">
-                        <h3>SONAR</h3>
-                        <p>Conception et programmation d'un sonar capable de balayer un angle de 180°.</p>
-                        <div class="project-tags">
-                            <span>Arduino</span>
-                            <span>Python</span>
-                            <span>Capteurs</span>
-                            <span>Robotique</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="sonar">Voir détails</button>
-                    </div>
-                </div>
-            <!--
-                <div class="project-card"
-                 data-category="c"
-                 data-id="magasin">
-                    <div class="project-img">
-                        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Logiciel%20Gestion" alt="Logiciel de Gestion de Magasin">
-                    </div>
-                    <div class="project-info">
-                        <h3>Logiciel de Gestion de Magasin</h3>
-                        <p>Conception et développement d'un logiciel en C pour la gestion des stocks, des ventes et des clients d'un magasin.</p>
-                        <div class="project-tags">
-                            <span>Langage C</span>
-                            <span>Base de données</span>
-                            <span>Interface utilisateur</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="magasin">Voir détails</button>
-                    </div>
-                </div>
-            -->
-                <div class="project-card" 
-                data-category="python"
-                data-id="probabilite">
-                    <div class="project-img">
-                        <img src="Images/tontine.jpg" alt="Analyse de Données">
-                    </div>
-                    <div class="project-info">
-                        <h3>Analyse stochastique d'une tontine</h3>
-                        <p>Projet Python d'analyse et de simulation de l'évolution d'une tontine</p>
-                        <div class="project-tags">
-                            <span>Python</span>
-                            <span>Matplotlib</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="probabilite">Voir détails</button>
-                    </div>
-                </div>
-                <div class="project-card"
-                 data-category="web"
-                 data-id="site">
-                    <div class="project-img">
-                        <img src="Images/portfolio.png" alt="Site Vitrine École">
-                    </div>
-                    <div class="project-info">
-                        <h3>Mon portfolio</h3>
-                        <p>Conception d'un portfolio afin de me vendre davantage</p>
-                        <div class="project-tags">
-                            <span>HTML/CSS</span>
-                            <span>JavaScript</span>
-                            <span>Responsive Design</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="site">Voir détails</button>
-                    </div>
-                </div>
-                <div class="project-card"
-                data-category="c"
-                data-id="tontine">
-                    <div class="project-img">
-                        <img src="Images/argent.jpg" alt="IA pour Jeu">
-                    </div>
-                    <div class="project-info">
-                        <h3>Programme de gestion d'une tontine</h3>
-                        <p>Développement d'un programme permettant de faire interagir des membres dans le cadre d'une tontine</p>
-                        <div class="project-tags">
-                            <span>C</span>
-                            <span>Algorithmes</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="tontine">Voir détails</button>
-                    </div>
-                </div>    
-                <div class="project-card"
-                 data-category="c"
-                 data-id="jeu">
-                    <div class="project-img">
-                        <img src="Images/bataille_reelle.webp" alt="IA pour Jeu">
-                    </div>
-                    <div class="project-info">
-                        <h3>Jeu de bataille navale en console</h3>
-                        <p>Développement d'un jeu de bataille navale sur 3 niveaux de mer en langage c</p>
-                        <div class="project-tags">
-                            <span>C</span>
-                            <span>Algorithmes</span>
-                        </div>
-                        <button class="project-details-btn" data-project-id="jeu">Voir détails</button>
-                    </div>
-                </div> 
-                <div class="project-card" data-category="embarque" data-id="hiker-stm32">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/STM32%20Hiker" alt="Projet Hiker STM32">
+  <!-- ░░ HERO ░░ -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-badge" data-aos>Disponible dès sept. 2026</div>
+      <h1 data-aos data-aos-delay="100">
+        <span class="name-line">Alexis</span>
+        <span class="name-line accent">Waffo</span>
+      </h1>
+      <p class="hero-role" data-aos data-aos-delay="200">
+        Ingénieur ESEO Paris-Vélizy · Data &amp; Systèmes embarqués
+      </p>
+      <p class="hero-sub" data-aos data-aos-delay="300">
+        Intelligence associative. Rigueur technique. Curiosité permanente.
+      </p>
+      <div class="hero-cta" data-aos data-aos-delay="400">
+        <a href="#projects" class="btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn-ghost">Me contacter</a>
+      </div>
+      <div class="hero-stack" data-aos data-aos-delay="500">
+        <span>Python</span><span>SQL</span><span>VHDL</span><span>STM32</span><span>Power BI</span>
+      </div>
     </div>
-    <div class="project-info">
-        <h3>Projet Hiker (Carte STM32)</h3>
-        <p>Détection de randonneurs et gestion d'événements inattendus avec machine à états.</p>
-        <div class="project-tags">
-            <span>STM32</span>
-            <span>C (Bas Niveau)</span>
-            <span>Registres</span>
-        </div>
-        <button class="project-details-btn" data-project-id="hiker-stm32">Voir détails</button>
+    <div class="hero-visual">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="code-block" data-aos data-aos-delay="300">
+        <div class="cb-dot red"></div><div class="cb-dot yellow"></div><div class="cb-dot green"></div>
+        <pre><code><span class="kw">class</span> <span class="fn">AlexisWaffo</span>:
+  role = <span class="str">"Data Engineer / Analyst"</span>
+  school = <span class="str">"ESEO Paris-Vélizy"</span>
+  skills = [
+    <span class="str">"Python"</span>, <span class="str">"SQL"</span>,
+    <span class="str">"FPGA"</span>, <span class="str">"STM32"</span>,
+    <span class="str">"Power BI"</span>, <span class="str">"Machine Learning"</span>
+  ]
+  superpower = <span class="str">"intelligence associative"</span></code></pre>
+      </div>
     </div>
-</div>
+    <div class="scroll-down"><span></span></div>
+  </section>
 
-<div class="project-card" data-category="embarque" data-id="fpga-microonde">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/FPGA%20Basys3" alt="Simulateur FPGA">
+  <!-- ░░ ABOUT ░░ -->
+  <section id="about">
+    <div class="section-header" data-aos>
+      <span class="section-num">01</span>
+      <h2>À propos</h2>
     </div>
-    <div class="project-info">
-        <h3>Simulateur Micro-ondes FPGA</h3>
-        <p>Conception d'un circuit numérique sur carte Basys 3 avec graphe et machine à états.</p>
-        <div class="project-tags">
-            <span>FPGA</span>
-            <span>Basys 3</span>
-            <span>VHDL/Verilog</span>
+    <div class="about-grid">
+      <div class="about-text" data-aos>
+        <p>
+          Étudiant ingénieur à l'<strong>ESEO Paris-Vélizy</strong>, je développe
+          une double compétence en <strong>analyse de données</strong> et en
+          <strong>systèmes embarqués</strong>. Mon parcours m'a conduit de la
+          physique des prépa à la conception FPGA, en passant par les pipelines
+          Python et la simulation stochastique.
+        </p>
+        <p>
+          Ce qui me définit : une <strong>intelligence associative</strong> qui me
+          permet de transposer des bases solides vers des défis nouveaux —
+          connecter les domaines pour construire des solutions que personne n'avait
+          envisagées.
+        </p>
+        <div class="about-links">
+          <a href="https://github.com/alex-codex" target="_blank" class="alink"><i class="fab fa-github"></i> alex-codex</a>
+          <a href="https://linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank" class="alink"><i class="fab fa-linkedin"></i> LinkedIn</a>
         </div>
-        <button class="project-details-btn" data-project-id="fpga-microonde">Voir détails</button>
+      </div>
+      <div class="skills-grid" data-aos data-aos-delay="150">
+        <div class="skill-block">
+          <h4>Data &amp; Analyse</h4>
+          <div class="tags">
+            <span>Python</span><span>Pandas</span><span>NumPy</span>
+            <span>SQL</span><span>Power BI</span><span>Matplotlib</span>
+            <span>Monte-Carlo</span><span>EDA</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Embarqué &amp; Numérique</h4>
+          <div class="tags">
+            <span>VHDL</span><span>FPGA / Vivado</span><span>STM32</span>
+            <span>Arduino</span><span>C bas niveau</span><span>FSM</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Développement</h4>
+          <div class="tags">
+            <span>C/C++</span><span>JavaScript</span><span>HTML/CSS</span>
+            <span>Git</span><span>Azure</span><span>Jupyter</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Certifications</h4>
+          <div class="certs">
+            <div class="cert-item"><i class="fas fa-award"></i><span>Python Programming — Meta</span></div>
+            <div class="cert-item"><i class="fas fa-award"></i><span>Google Data Analytics <em>(en cours)</em></span></div>
+            <div class="cert-item"><i class="fas fa-award"></i><span>C++ — Univ. of California</span></div>
+            <div class="cert-item"><i class="fas fa-plane"></i><span>BIA — Aéronautique <em>(en cours)</em></span></div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </section>
 
-<!-- <div class="project-card" data-category="electronique" data-id="elec-analogique">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Elec%20Analogique" alt="Électronique Analogique">
+  <!-- ░░ TIMELINE ░░ -->
+  <section id="timeline">
+    <div class="section-header" data-aos>
+      <span class="section-num">02</span>
+      <h2>Parcours</h2>
     </div>
-    <div class="project-info">
-        <h3>Détection de proximité (Capteur US)</h3>
-        <p>Simulation analogique et conversion de largeur d'impulsion pour affichage sur bargraph.</p>
-        <div class="project-tags">
-            <span>Analogique</span>
-            <span>Capteur US</span>
-            <span>Simulation</span>
-        </div>
-        <button class="project-details-btn" data-project-id="elec-analogique">Voir détails</button>
-    </div>
-</div>
+    <div class="timeline-track" id="timelineTrack"></div>
+  </section>
 
-<div class="project-card" data-category="informatique" data-id="arch-si">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Logisim" alt="Logisim Assembleur">
+  <!-- ░░ PROJECTS ░░ -->
+  <section id="projects">
+    <div class="section-header" data-aos>
+      <span class="section-num">03</span>
+      <h2>Projets</h2>
     </div>
-    <div class="project-info">
-        <h3>Conception Ordinateur (Bas Niveau)</h3>
-        <p>Architecture d'un ordinateur sur Logisim et programmation en langage assembleur.</p>
-        <div class="project-tags">
-            <span>Logisim</span>
-            <span>Assembleur</span>
-            <span>Architecture SI</span>
-        </div>
-        <button class="project-details-btn" data-project-id="arch-si">Voir détails</button>
+    <div class="filter-bar" data-aos>
+      <button class="filt active" data-filter="all">Tous</button>
+      <button class="filt" data-filter="data">Data</button>
+      <button class="filt" data-filter="embarque">Embarqué / FPGA</button>
+      <button class="filt" data-filter="arduino">Arduino</button>
+      <button class="filt" data-filter="dev">Dev</button>
     </div>
-</div>
+    <div class="projects-grid" id="projectsGrid"></div>
+  </section>
 
-<div class="project-card" data-category="matlab" data-id="traitement-signal">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Matlab%20Image" alt="Traitement Image">
+  <!-- ░░ CONTACT ░░ -->
+  <section id="contact">
+    <div class="section-header" data-aos>
+      <span class="section-num">04</span>
+      <h2>Contact</h2>
     </div>
-    <div class="project-info">
-        <h3>Traitement Numérique d'Image</h3>
-        <p>Segmentation, produit de convolution, calcul de gradient et laplacien des pixels.</p>
-        <div class="project-tags">
-            <span>MATLAB</span>
-            <span>TNS</span>
-            <span>Mathématiques</span>
+    <div class="contact-grid">
+      <div class="contact-info" data-aos>
+        <p class="contact-intro">Mon profil vous intéresse ? Discutons-en.</p>
+        <div class="cinfo"><i class="fas fa-envelope"></i><a href="mailto:alexiswaffo05@gmail.com">alexiswaffo05@gmail.com</a></div>
+        <div class="cinfo"><i class="fas fa-map-marker-alt"></i><span>Paris-Vélizy, France</span></div>
+        <div class="social-row">
+          <a href="https://linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/alex-codex" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://wa.me/qr/SZ23ID5F6K7KP1" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
-        <button class="project-details-btn" data-project-id="traitement-signal">Voir détails</button>
+      </div>
+      <form class="contact-form" id="contactForm" data-aos data-aos-delay="150">
+        <div class="fg">
+          <label for="name">Nom</label>
+          <input id="name" name="name" type="text" required autocomplete="off" />
+        </div>
+        <div class="fg">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="fg">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Envoyer <i class="fas fa-arrow-right"></i></button>
+        <div id="formStatus"></div>
+      </form>
     </div>
-</div>
+  </section>
 
-<div class="project-card" data-category="electronique" data-id="elec-puissance">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/Elec%20Puissance" alt="Alimentation Elec">
+  <!-- ░░ FOOTER ░░ -->
+  <footer>
+    <p>© 2026 Alexis Waffo · Ingénieur ESEO Paris-Vélizy</p>
+    <div class="footer-nav">
+      <a href="#about">À propos</a>
+      <a href="#timeline">Parcours</a>
+      <a href="#projects">Projets</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="project-info">
-        <h3>Design Fonction Alimentation</h3>
-        <p>Conception et implémentation MATLAB de systèmes d'alimentation électrique.</p>
-        <div class="project-tags">
-            <span>Génie Électrique</span>
-            <span>MATLAB</span>
-            <span>Puissance</span>
-        </div>
-        <button class="project-details-btn" data-project-id="elec-puissance">Voir détails</button>
-    </div>
-</div>
+  </footer>
 
-<div class="project-card" data-category="informatique" data-id="bdd-serveur">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/SQL%20Apache" alt="Serveur Apache">
+  <!-- ░░ MODAL PROJET ░░ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <div id="modalContent"></div>
     </div>
-    <div class="project-info">
-        <h3>Déploiement Serveur & SQL</h3>
-        <p>Création de base de données relationnelle et gestion backend d'un serveur Apache.</p>
-        <div class="project-tags">
-            <span>SQL</span>
-            <span>Apache</span>
-            <span>Backend</span>
-        </div>
-        <button class="project-details-btn" data-project-id="bdd-serveur">Voir détails</button>
-    </div>
-</div>
+  </div>
 
-<div class="project-card" data-category="informatique" data-id="poo-academique">
-    <div class="project-img">
-        <img src="https://placeholder.pics/svg/300x200/DEDEDE/555555/POO" alt="Projet POO">
-    </div>
-    <div class="project-info">
-        <h3>Projet de Programmation Orientée Objet</h3>
-        <p>Application académique implémentant les concepts avancés de la POO.</p>
-        <div class="project-tags">
-            <span>POO</span>
-            <span>Java / C++</span>
-            <span>Architecture Logicielle</span>
-        </div>
-        <button class="project-details-btn" data-project-id="poo-academique">Voir détails</button>
-    </div>
-</div>   -->
-            </div>
-        </div>
-    </section>
-
-    <div class="project-modal" id="projectModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                </div>
-        </div>
-    </div>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Mon profil vous interesse ?</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Informations de contact</h3>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>alexiswaffo05@gmail.com</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <p>+237 690675160</p>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p>Paris-Vélizy, France</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="www.linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/alex-codex/" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://wa.me/qr/SZ23ID5F6K7KP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Envoyez-moi un message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">NOM</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary">Envoyer</button>
-                    </form>
-                    <div id="formStatus"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Portfolio - Alexis Waffo. Tous droits réservés.</p>
-            <div class="footer-links">
-                <a href="#accueil">Accueil</a>
-                <a href="#a-propos">À propos</a>
-                <a href="#projets">Projets</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
