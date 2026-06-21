@@ -3,222 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexis Waffo — Ingénieur ESEO</title>
+  <title>Alexis Waffo — Portfolio Spatial 3D</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- ░░ CANVAS PARTICULES ░░ -->
-  <canvas id="particles"></canvas>
+  <div id="canvas-container"></div>
 
-  <!-- ░░ HEADER ░░ -->
-  <header id="header">
-    <div class="header-inner">
-      <a href="#hero" class="logo-mark">AW<span>.</span></a>
-      <nav>
-        <a href="#about">À propos</a>
-        <a href="#timeline">Parcours</a>
-        <a href="#projects">Projets</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="burger" id="burger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#about">À propos</a>
-      <a href="#timeline">Parcours</a>
-      <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </header>
-
-  <!-- ░░ HERO ░░ -->
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-badge" data-aos>Disponible dès sept. 2026</div>
-      <h1 data-aos data-aos-delay="100">
-        <span class="name-line">Alexis</span>
-        <span class="name-line accent">Waffo</span>
-      </h1>
-      <p class="hero-role" data-aos data-aos-delay="200">
-        Ingénieur ESEO Paris-Vélizy · Data &amp; Systèmes embarqués
-      </p>
-      <p class="hero-sub" data-aos data-aos-delay="300">
-        Intelligence associative. Rigueur technique. Curiosité permanente.
-      </p>
-      <div class="hero-cta" data-aos data-aos-delay="400">
-        <a href="#projects" class="btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn-ghost">Me contacter</a>
-      </div>
-      <div class="hero-stack" data-aos data-aos-delay="500">
-        <span>Python</span><span>SQL</span><span>VHDL</span><span>STM32</span><span>Power BI</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <div class="orb orb3"></div>
-      <div class="code-block" data-aos data-aos-delay="300">
-        <div class="cb-dot red"></div><div class="cb-dot yellow"></div><div class="cb-dot green"></div>
-        <pre><code><span class="kw">class</span> <span class="fn">AlexisWaffo</span>:
-  role = <span class="str">"Data Engineer / Analyst"</span>
-  school = <span class="str">"ESEO Paris-Vélizy"</span>
-  skills = [
-    <span class="str">"Python"</span>, <span class="str">"SQL"</span>,
-    <span class="str">"FPGA"</span>, <span class="str">"STM32"</span>,
-    <span class="str">"Power BI"</span>, <span class="str">"Machine Learning"</span>
-  ]
-  superpower = <span class="str">"intelligence associative"</span></code></pre>
-      </div>
-    </div>
-    <div class="scroll-down"><span></span></div>
-  </section>
-
-  <!-- ░░ ABOUT ░░ -->
-  <section id="about">
-    <div class="section-header" data-aos>
-      <span class="section-num">01</span>
-      <h2>À propos</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text" data-aos>
-        <p>
-          Étudiant ingénieur à l'<strong>ESEO Paris-Vélizy</strong>, je développe
-          une double compétence en <strong>analyse de données</strong> et en
-          <strong>systèmes embarqués</strong>. Mon parcours m'a conduit de la
-          physique des prépa à la conception FPGA, en passant par les pipelines
-          Python et la simulation stochastique.
-        </p>
-        <p>
-          Ce qui me définit : une <strong>intelligence associative</strong> qui me
-          permet de transposer des bases solides vers des défis nouveaux —
-          connecter les domaines pour construire des solutions que personne n'avait
-          envisagées.
-        </p>
-        <div class="about-links">
-          <a href="https://github.com/alex-codex" target="_blank" class="alink"><i class="fab fa-github"></i> alex-codex</a>
-          <a href="https://linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank" class="alink"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </div>
-      </div>
-      <div class="skills-grid" data-aos data-aos-delay="150">
-        <div class="skill-block">
-          <h4>Data &amp; Analyse</h4>
-          <div class="tags">
-            <span>Python</span><span>Pandas</span><span>NumPy</span>
-            <span>SQL</span><span>Power BI</span><span>Matplotlib</span>
-            <span>Monte-Carlo</span><span>EDA</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <h4>Embarqué &amp; Numérique</h4>
-          <div class="tags">
-            <span>VHDL</span><span>FPGA / Vivado</span><span>STM32</span>
-            <span>Arduino</span><span>C bas niveau</span><span>FSM</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <h4>Développement</h4>
-          <div class="tags">
-            <span>C/C++</span><span>JavaScript</span><span>HTML/CSS</span>
-            <span>Git</span><span>Azure</span><span>Jupyter</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <h4>Certifications</h4>
-          <div class="certs">
-            <div class="cert-item"><i class="fas fa-award"></i><span>Python Programming — Meta</span></div>
-            <div class="cert-item"><i class="fas fa-award"></i><span>Google Data Analytics <em>(en cours)</em></span></div>
-            <div class="cert-item"><i class="fas fa-award"></i><span>C++ — Univ. of California</span></div>
-            <div class="cert-item"><i class="fas fa-plane"></i><span>BIA — Aéronautique <em>(en cours)</em></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ░░ TIMELINE ░░ -->
-  <section id="timeline">
-    <div class="section-header" data-aos>
-      <span class="section-num">02</span>
-      <h2>Parcours</h2>
-    </div>
-    <div class="timeline-track" id="timelineTrack"></div>
-  </section>
-
-  <!-- ░░ PROJECTS ░░ -->
-  <section id="projects">
-    <div class="section-header" data-aos>
-      <span class="section-num">03</span>
-      <h2>Projets</h2>
-    </div>
-    <div class="filter-bar" data-aos>
-      <button class="filt active" data-filter="all">Tous</button>
-      <button class="filt" data-filter="data">Data</button>
-      <button class="filt" data-filter="embarque">Embarqué / FPGA</button>
-      <button class="filt" data-filter="arduino">Arduino</button>
-      <button class="filt" data-filter="dev">Dev</button>
-    </div>
-    <div class="projects-grid" id="projectsGrid"></div>
-  </section>
-
-  <!-- ░░ CONTACT ░░ -->
-  <section id="contact">
-    <div class="section-header" data-aos>
-      <span class="section-num">04</span>
-      <h2>Contact</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info" data-aos>
-        <p class="contact-intro">Mon profil vous intéresse ? Discutons-en.</p>
-        <div class="cinfo"><i class="fas fa-envelope"></i><a href="mailto:alexiswaffo05@gmail.com">alexiswaffo05@gmail.com</a></div>
-        <div class="cinfo"><i class="fas fa-map-marker-alt"></i><span>Paris-Vélizy, France</span></div>
-        <div class="social-row">
-          <a href="https://linkedin.com/in/alexis-trésor-waffo-624508297" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/alex-codex" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://wa.me/qr/SZ23ID5F6K7KP1" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-      <form class="contact-form" id="contactForm" data-aos data-aos-delay="150">
-        <div class="fg">
-          <label for="name">Nom</label>
-          <input id="name" name="name" type="text" required autocomplete="off" />
-        </div>
-        <div class="fg">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required />
-        </div>
-        <div class="fg">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn-primary">Envoyer <i class="fas fa-arrow-right"></i></button>
-        <div id="formStatus"></div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ░░ FOOTER ░░ -->
-  <footer>
-    <p>© 2026 Alexis Waffo · Ingénieur ESEO Paris-Vélizy</p>
-    <div class="footer-nav">
-      <a href="#about">À propos</a>
-      <a href="#timeline">Parcours</a>
-      <a href="#projects">Projets</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </footer>
-
-  <!-- ░░ MODAL PROJET ░░ -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box" id="modalBox">
-      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-      <div id="modalContent"></div>
-    </div>
+  <div id="sphere-nav-overlay" class="sphere-nav-overlay">
+    <button class="sphere-nav-item" data-target="about">À propos</button>
+    <button class="sphere-nav-item" data-target="timeline">Parcours</button>
+    <button class="sphere-nav-item" data-target="projects">Projets</button>
+    <button class="sphere-nav-item" data-target="contact">Contact</button>
   </div>
 
+  <main id="ui-layer">
+    
+    <section id="view-home" class="view-panel active">
+      <div class="intro-box">
+        <span class="badge">Ingénieur Étudiant · ESEO Paris-Vélizy</span>
+        <h1>Alexis Waffo<span> </span></h1>
+        <p class="subtitle">Explorez mon univers à travers cette sphère numérique interactive. Cliquez sur les nodules pour voyager au cœur de mes compétences et réalisations.</p>
+        <p class="hint"><i class="fas fa-mouse-pointer"></i> Glissez pour faire pivoter l'espace · Cliquez sur un nodule pour zoomer</p>
+      </div>
+    </section>
+
+    <section id="view-about" class="view-panel">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour à la sphère</button>
+      <div class="panel-content card-glass">
+        <h2>À propos de moi</h2>
+        <p>Étudiant ingénieur passionné par le développement d'interfaces numériques avancées, la modélisation 3D et les architectures logicielles innovantes à l'ESEO.</p>
+        <div class="skills-mini">
+          <span>JavaScript / Three.js</span>
+          <span>HTML5 / CSS3 Modern</span>
+          <span>Ingénierie Logicielle</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-timeline" class="view-panel">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour à la sphère</button>
+      <div class="panel-content card-glass">
+        <h2>Mon Parcours</h2>
+        <div class="custom-timeline">
+          <div class="tl-item">
+            <span class="tl-date">En cours</span>
+            <h4>Cycle Ingénieur (1ère année - Bac+3)</h4>
+            <p>ESEO Paris-Vélizy — Approfondissement des sciences du numérique et gestion de projets technologiques complexes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-projects" class="view-panel">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour à la sphère</button>
+      <div class="panel-content card-glass">
+        <h2>Mes Projets</h2>
+        <div id="projects-carousel-grid"></div>
+      </div>
+    </section>
+
+    <!-- Modal pour voir les détails d'une catégorie -->
+    <section id="view-category" class="view-panel">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour aux catégories</button>
+      <div class="panel-content card-glass" style="max-height: 80vh !important; overflow-y: auto !important;">
+        <h2 id="category-title"></h2>
+        <div id="category-projects-list"></div>
+      </div>
+    </section>
+
+    <section id="view-contact" class="view-panel">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour à la sphère</button>
+      <div class="panel-content card-glass">
+        <h2>Entrer en contact</h2>
+        <form id="contactForm" class="spatial-form">
+          <div class="fg">
+            <label for="name">Nom</label>
+            <input id="name" type="text" required autocomplete="off" />
+          </div>
+          <div class="fg">
+            <label for="email">Email</label>
+            <input id="email" type="email" required />
+          </div>
+          <div class="fg">
+            <label for="message">Message</label>
+            <textarea id="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn-send">Transmettre le signal <i class="fas fa-paper-plane"></i></button>
+          <div id="formStatus"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="data.js"></script>
   <script src="script.js"></script>
 </body>

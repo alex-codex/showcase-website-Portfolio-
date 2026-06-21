@@ -107,20 +107,20 @@ const TIMELINE = [
     color: "#64b5f6"
   },
   {
-    year: "2023 — 2025",
-    title: "Classes Préparatoires Intégrées",
-    subtitle: "Prépas Internationales, Yaoundé",
-    detail: "Top 2 de la promotion · Projets Arduino, FPGA, simulations",
-    icon: "⚙️",
-    color: "#4db6ac"
-  },
-  {
     year: "2024",
     title: "Stage — INFOGENIE TECHNOLOGIE",
     subtitle: "Yaoundé, Cameroun",
     detail: "Déploiement réseau, collecte et analyse de données de surveillance",
     icon: "💼",
     color: "#f06292"
+  },
+  {
+    year: "2023 — 2025",
+    title: "Classes Préparatoires Intégrées",
+    subtitle: "Prépas Internationales, Yaoundé",
+    detail: "Top 2 de la promotion · Projets Arduino, FPGA, simulations",
+    icon: "⚙️",
+    color: "#4db6ac"
   },
   {
     year: "Sept. 2025",
