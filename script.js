@@ -514,13 +514,13 @@ function showCategoryDetails(category, projects, label, icon) {
   // SPHÈRE GÉANTE : Paramètres
   const radius = 20.0; 
   const defaultCameraZ = 38;
-  const smallCameraZ = 42;
-  const mobileCameraZ = 50;
-  const extraMobileCameraZ = 54;
+  const smallCameraZ = 44;
+  const mobileCameraZ = 54;
+  const extraMobileCameraZ = 60;
   const defaultSphereScale = 0.7;
   const smallSphereScale = 0.62;
-  const mobileSphereScale = 0.5;
-  const extraMobileSphereScale = 0.42;
+  const mobileSphereScale = 0.42;
+  const extraMobileSphereScale = 0.34;
   let targetCameraZ = defaultCameraZ; 
   let targetCameraY = 0;
   let targetCameraX = 0;
@@ -586,21 +586,25 @@ function showCategoryDetails(category, projects, label, icon) {
 
     if (width <= 420) {
       targetCameraZ = extraMobileCameraZ;
+      targetCameraY = 0.18;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(extraMobileSphereScale, extraMobileSphereScale, extraMobileSphereScale);
       }
     } else if (width <= 520) {
       targetCameraZ = mobileCameraZ;
+      targetCameraY = 0.1;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(mobileSphereScale, mobileSphereScale, mobileSphereScale);
       }
     } else if (width <= 760) {
       targetCameraZ = smallCameraZ;
+      targetCameraY = 0.05;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(smallSphereScale, smallSphereScale, smallSphereScale);
       }
     } else {
       targetCameraZ = defaultCameraZ;
+      targetCameraY = 0;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(defaultSphereScale, defaultSphereScale, defaultSphereScale);
       }
@@ -628,8 +632,29 @@ function showCategoryDetails(category, projects, label, icon) {
     previousMousePosition = { x: e.clientX, y: e.clientY };
   });
 
-  window.addEventListener('mousedown', () => { if(currentView === 'home') isDragging = true; });
-  window.addEventListener('mouseup', () => { isDragging = false; });
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'touch') return;
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    if (isDragging && currentView === 'home') {
+      const deltaX = e.clientX - previousMousePosition.x;
+      const deltaY = e.clientY - previousMousePosition.y;
+      particleSphere.rotation.y += deltaX * 0.003;
+      particleSphere.rotation.x += deltaY * 0.003;
+    }
+    previousMousePosition = { x: e.clientX, y: e.clientY };
+  });
+
+  window.addEventListener('pointerdown', (e) => {
+    if (currentView === 'home' && e.pointerType === 'touch' && !e.target.closest('.sphere-nav-item')) {
+      isDragging = true;
+      previousMousePosition = { x: e.clientX, y: e.clientY };
+    }
+  });
+
+  window.addEventListener('pointerup', () => { isDragging = false; });
+  window.addEventListener('pointercancel', () => { isDragging = false; });
   const navItems = [
     { name: 'about', el: document.querySelector('[data-target="about"]'), pos: new THREE.Vector3(-1, 0.6, 1).normalize().multiplyScalar(radius * 1.05) },
     { name: 'timeline', el: document.querySelector('[data-target="timeline"]'), pos: new THREE.Vector3(1, 0.3, 0.8).normalize().multiplyScalar(radius * 1.05) },
