@@ -508,11 +508,17 @@ function showCategoryDetails(category, projects, label, icon) {
   
   // SPHÈRE GÉANTE : Paramètres
   const radius = 20.0; 
-  let targetCameraZ = 38; 
+  const defaultCameraZ = 38;
+  const smallCameraZ = 42;
+  const mobileCameraZ = 46;
+  const defaultSphereScale = 0.7;
+  const smallSphereScale = 0.62;
+  const mobileSphereScale = 0.5;
+  let targetCameraZ = defaultCameraZ; 
   let targetCameraY = 0;
   let targetCameraX = 0;
 
-  camera.position.z = 38; 
+  camera.position.z = targetCameraZ; 
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -567,6 +573,27 @@ function showCategoryDetails(category, projects, label, icon) {
 
   // 📹 Créer la sphère hologramme avec vidéo
   const holoObject = createHologramSphere(scene);
+
+  function updateResponsive3D() {
+    if (window.innerWidth <= 520) {
+      targetCameraZ = mobileCameraZ;
+      if (holoObject && holoObject.sphere) {
+        holoObject.sphere.scale.set(mobileSphereScale, mobileSphereScale, mobileSphereScale);
+      }
+    } else if (window.innerWidth <= 760) {
+      targetCameraZ = smallCameraZ;
+      if (holoObject && holoObject.sphere) {
+        holoObject.sphere.scale.set(smallSphereScale, smallSphereScale, smallSphereScale);
+      }
+    } else {
+      targetCameraZ = defaultCameraZ;
+      if (holoObject && holoObject.sphere) {
+        holoObject.sphere.scale.set(defaultSphereScale, defaultSphereScale, defaultSphereScale);
+      }
+    }
+  }
+
+  updateResponsive3D();
 
   const mouse = new THREE.Vector2(-9999, -9999);
   const clock = new THREE.Clock();
@@ -650,13 +677,14 @@ function showCategoryDetails(category, projects, label, icon) {
       let x = (wp.x * 0.5 + 0.5) * window.innerWidth;
       let y = (-(wp.y * 0.5) + 0.5) * window.innerHeight;
 
-      // LIMITER LA ZONE DE DÉPLACEMENT : Garder les éléments dans une zone centrale
-      const minMargin = 100;
+      // LIMITER LA ZONE DE DÉPLACEMENT : garder les éléments visibles sur mobile
+      const minMargin = window.innerWidth <= 520 ? 40 : 100;
+      const minMarginY = window.innerWidth <= 520 ? 36 : 100;
       const maxX = window.innerWidth - minMargin;
-      const maxY = window.innerHeight - minMargin;
+      const maxY = window.innerHeight - minMarginY;
       
       x = Math.max(minMargin, Math.min(x, maxX));
-      y = Math.max(minMargin, Math.min(y, maxY));
+      y = Math.max(minMarginY, Math.min(y, maxY));
 
       item.el.style.left = `${x}px`;
       item.el.style.top = `${y}px`;
@@ -728,7 +756,7 @@ function showCategoryDetails(category, projects, label, icon) {
     if (viewName === 'home') {
       targetCameraX = 0;
       targetCameraY = 0;
-      targetCameraZ = 38; 
+      updateResponsive3D();
       
       setTimeout(() => {
         const homeView = document.getElementById('view-home');
@@ -803,6 +831,9 @@ function showCategoryDetails(category, projects, label, icon) {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    if (currentView === 'home') {
+      updateResponsive3D();
+    }
   });
 
 })();
