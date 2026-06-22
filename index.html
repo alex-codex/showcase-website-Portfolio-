@@ -7,6 +7,16 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- 📹 Vidéo Hologramme (cachée, utilisée comme texture) -->
+  <video id="holoVideo" style="display: none;" muted crossorigin="anonymous">
+    <source src="Images/hologram.mp4" type="video/mp4">
+  </video>
+  
+  <!-- 🔊 Audio Ambiance (joue partout) -->
+  <audio id="ambientAudio" style="display: none;" preload="auto" crossorigin="anonymous">
+    <source src="sounds/Audio2.mp3" type="audio/mpeg">
+  </audio>
 </head>
 <body>
 
@@ -22,11 +32,12 @@
   <main id="ui-layer">
     
     <section id="view-home" class="view-panel active">
-      <div class="intro-box">
-        <span class="badge">Ingénieur Étudiant · ESEO Paris-Vélizy</span>
-        <h1>Alexis Waffo<span> </span></h1>
-        <p class="subtitle">Explorez mon univers à travers cette sphère numérique interactive. Cliquez sur les nodules pour voyager au cœur de mes compétences et réalisations.</p>
-        <p class="hint"><i class="fas fa-mouse-pointer"></i> Glissez pour faire pivoter l'espace · Cliquez sur un nodule pour zoomer</p>
+      <div class="home-ui-panel">
+        <div class="home-title">
+          <h1>Alexis Waffo</h1>
+          <p class="home-subtitle">Étudiant Ingénieur · ESEO Paris-Vélizy</p>
+        </div>
+        <div class="home-right-text typing-text" data-text="Explorez mon univers à travers cette sphère numérique interactive. Cliquez sur les nodules pour voyager au cœur de mes compétences et réalisations."></div>
       </div>
     </section>
 
@@ -34,11 +45,53 @@
       <button class="back-btn"><i class="fas fa-arrow-left"></i> Retour à la sphère</button>
       <div class="panel-content card-glass">
         <h2>À propos de moi</h2>
-        <p>Étudiant ingénieur passionné par le développement d'interfaces numériques avancées, la modélisation 3D et les architectures logicielles innovantes à l'ESEO.</p>
+        <div class="about-grid">
+          <div class="about-main">
+            <p class="about-lead">Je suis <strong>Alexis Waffo</strong>, étudiant ingénieur en Data & IA à ESEO Vélizy. J'aime les chiffres, les patterns cachés et le raisonnement rigoureux, ce qui m'a naturellement guidé vers la data science.</p>
+            <p>Je ne fais pas que manipuler des données : je construis des modèles qui racontent des histoires, je découvre des liens entre variables économiques, et je maîtrise l'incertitude via des simulations Monte Carlo à plus de 10 000 scénarios.</p>
+            <p>Ma véritable force ? Comprendre le « pourquoi » derrière chaque nombre et transformer ces insights en décisions actionnables pour le terrain.</p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <span class="highlight-title">Objectif</span>
+                <p>Rechercher une alternance dès septembre en Data, pour appliquer rigueur mathématique et pensée analytique à des cas concrets.</p>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-title">Approche</span>
+                <p>Écrire des modèles clairs, expliquer le résultat et privilégier la visualisation qui facilite la prise de décision.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="about-side">
+            <div class="about-card">
+              <span class="about-card-title">Compétences clés</span>
+              <ul>
+                <li>Python & SQL</li>
+                <li>Machine Learning</li>
+                <li>Séries temporelles & VAR/VECM</li>
+                <li>Feature engineering</li>
+              </ul>
+            </div>
+            <div class="about-card">
+              <span class="about-card-title">Domaines</span>
+              <ul>
+                <li>Data science</li>
+                <li>Visualisation</li>
+                <li>Modélisation statistique</li>
+                <li>Ingénierie logicielle</li>
+              </ul>
+            </div>
+            <div class="about-card">
+              <span class="about-card-title">Passions</span>
+              <p>Aviation (BIA), basketball, et rendre les données accessibles à tous.</p>
+            </div>
+          </aside>
+        </div>
         <div class="skills-mini">
-          <span>JavaScript / Three.js</span>
-          <span>HTML5 / CSS3 Modern</span>
+          <span>Statistiques</span>
           <span>Ingénierie Logicielle</span>
+          <span>Python / SQL</span>
+          <span>Machine Learning</span>
+          <span>Data Visualization</span>
         </div>
       </div>
     </section>

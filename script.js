@@ -23,6 +23,155 @@ function injectPortfolioData() {
 // Lancement immédiat
 injectPortfolioData();
 
+/* ═══════════════════════════════════════════════
+   SPHÈRE HOLOGRAMME AVEC VIDÉO
+═══════════════════════════════════════════════ */
+function createHologramSphere(scene) {
+  // Récupérer les éléments vidéo et audio
+  const holoVideo = document.getElementById('holoVideo');
+  const ambientAudio = document.getElementById('ambientAudio');
+  
+  if (!holoVideo) {
+    console.warn('Élément vidéo hologramme non trouvé');
+    return null;
+  }
+
+  // 📹 Créer la texture vidéo
+  const videoTexture = new THREE.VideoTexture(holoVideo);
+  videoTexture.colorSpace = THREE.SRGBColorSpace;
+
+  // 🎨 Créer le shader hologramme personnalisé
+  const holoShaderMaterial = new THREE.ShaderMaterial({
+    uniforms: {
+      videoTexture: { value: videoTexture },
+      time: { value: 0 }
+    },
+    
+    // Vertex Shader (géométrie)
+    vertexShader: `
+      varying vec2 vUv;
+      
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    
+    // Fragment Shader (pixels - effet hologramme)
+    fragmentShader: `
+      uniform sampler2D videoTexture;
+      uniform float time;
+      varying vec2 vUv;
+      
+      float random(vec2 st) {
+        return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453123);
+      }
+      
+      void main() {
+          // 1️⃣ Zoomer sur la vidéo avec correction d'aspect ratio
+        float aspectRatio = 1.6;  // ← Ajuste ce nombre
+vec2 zoomedUv = (vUv - 0.5) * vec2(1.1, 1.1 * aspectRatio) + 0.5;
+  
+        zoomedUv.x += 0.28;
+        zoomedUv.y += 0.1;
+  
+          // Récupérer la couleur de la vidéo
+          vec4 videoColor = texture2D(videoTexture, zoomedUv);
+  
+          // Si la vidéo n'a pas chargé, la rendre invisible
+          if (videoColor.a < 0.01) {
+           discard;
+  }
+  
+  // 2️⃣ Scan lines (effet d'écran vieux)
+  float scanline = sin(vUv.y * 150.0 + time * 2.0) * 0.15;
+        // 3️⃣ Glitch aléatoire (distortion)
+        float glitch = random(vUv + time) * 0.08;
+        if (random(vUv + time * 0.5) > 0.95) {
+          glitch = random(vUv * 2.0 + time) * 0.2;
+        }
+        
+        // 4️⃣ Flicker (scintillement hologramme)
+        float flicker = sin(time * 15.0) * 0.1 + 0.85;
+        
+        // 5️⃣ Teinte hologramme (cyan/bleu)
+        vec3 holoColor = videoColor.rgb * vec3(0.3, 1.2, 1.4);
+        
+        // 6️⃣ Ajouter une bande de couleur dynamique
+        float colorShift = sin(vUv.y * 3.0 + time) * 0.5 + 0.5;
+        holoColor += vec3(0.0, 0.3, 0.5) * colorShift * 0.3;
+        
+        // 7️⃣ Combiner tous les effets
+        vec3 finalColor = holoColor + scanline + glitch * 0.2;
+        finalColor *= flicker;
+        
+        // 8️⃣ Ajouter une lueur en bordure (vignette)
+        float vignette = 1.0 - length(vUv - 0.5) * 0.8;
+        finalColor *= vignette;
+        
+        // 9️⃣ Plus transparent : réduire l'opacité pour voir les particules à travers
+        float alpha = videoColor.a * 0.85;  // ← 85% d'opacité (transparent)
+        
+        gl_FragColor = vec4(finalColor, alpha);
+      }
+    `,
+    
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.NormalBlending,
+    side: THREE.BackSide
+  });
+
+  // 🔘 Créer la géométrie de la sphère PLUS PETITE
+  const sphereGeometry = new THREE.IcosahedronGeometry(16, 32);
+  const holoSphere = new THREE.Mesh(sphereGeometry, holoShaderMaterial);
+  
+  // Positionner la sphère au centre AVEC TRANSPARENCE
+  holoSphere.position.set(0, 0, 0);
+  holoSphere.scale.set(0.7, 0.7, 0.7);
+  
+  scene.add(holoSphere);
+
+  // 🔊 Gérer l'audio : jouer une seule fois
+  if (ambientAudio) {
+    ambientAudio.volume = 0.6;
+    
+    // Déverrouiller l'audio au premier clic/interaction
+    const playAudio = () => {
+      ambientAudio.muted = false;
+      ambientAudio.play().catch(err => {
+        console.log('Audio autoplay bloqué, attente d\'interaction utilisateur');
+      });
+      document.removeEventListener('click', playAudio);
+      document.removeEventListener('touchstart', playAudio);
+    };
+    
+    document.addEventListener('click', playAudio);
+    document.addEventListener('touchstart', playAudio);
+    
+    // Essayer de jouer immédiatement (certains navigateurs l'autorisent)
+    ambientAudio.muted = false;
+    ambientAudio.play().catch(err => {
+      console.log('Audio autoplay bloqué initialement');
+    });
+  }
+
+  // 🎥 Gérer la vidéo : jouer une seule fois (pas de boucle)
+  holoVideo.loop = true;
+  holoVideo.muted = true;
+  holoVideo.play().catch(err => {
+    console.log('Lecture vidéo en attente:', err);
+  });
+
+  // Animation du shader
+  return {
+    sphere: holoSphere,
+    update: function(deltaTime) {
+      holoShaderMaterial.uniforms.time.value += deltaTime;
+    }
+  };
+}
+
 function genererConstellationParcours(timeline) {
     const container = document.querySelector('.custom-timeline');
     if (!container) return;
@@ -30,7 +179,7 @@ function genererConstellationParcours(timeline) {
     // Nettoyage
     container.innerHTML = '';
     container.style.position = 'relative';
-    container.style.minHeight = '1000px'; // ✅ AUGMENTÉ pour plus de place
+    container.style.minHeight = '1000px';
 
     // 1️⃣ Créer le SVG pour les lignes de connexion
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -296,8 +445,6 @@ function genererCartesProjets(projects) {
     carouselContainer.appendChild(carousel);
     section.appendChild(carouselContainer);
 
-    // ❌ BOUTON SUPPRIMÉ - Les utilisateurs cliquent directement sur les cartes pour ouvrir le modal
-    
     container.appendChild(section);
   });
 }
@@ -418,10 +565,14 @@ function showCategoryDetails(category, projects, label, icon) {
   const starField = new THREE.Points(starGeometry, starMaterial);
   scene.add(starField);
 
+  // 📹 Créer la sphère hologramme avec vidéo
+  const holoObject = createHologramSphere(scene);
+
   const mouse = new THREE.Vector2(-9999, -9999);
   const clock = new THREE.Clock();
   let isDragging = false;
   let previousMousePosition = { x: 0, y: 0 };
+  let lastDeltaTime = 0;
 
   window.addEventListener('mousemove', (e) => {
     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -438,7 +589,6 @@ function showCategoryDetails(category, projects, label, icon) {
 
   window.addEventListener('mousedown', () => { if(currentView === 'home') isDragging = true; });
   window.addEventListener('mouseup', () => { isDragging = false; });
-
   const navItems = [
     { name: 'about', el: document.querySelector('[data-target="about"]'), pos: new THREE.Vector3(-1, 0.6, 1).normalize().multiplyScalar(radius * 1.05) },
     { name: 'timeline', el: document.querySelector('[data-target="timeline"]'), pos: new THREE.Vector3(1, 0.3, 0.8).normalize().multiplyScalar(radius * 1.05) },
@@ -501,7 +651,7 @@ function showCategoryDetails(category, projects, label, icon) {
       let y = (-(wp.y * 0.5) + 0.5) * window.innerHeight;
 
       // LIMITER LA ZONE DE DÉPLACEMENT : Garder les éléments dans une zone centrale
-      const minMargin = 100; // Minimum de pixels du bord (ajustable)
+      const minMargin = 100;
       const maxX = window.innerWidth - minMargin;
       const maxY = window.innerHeight - minMargin;
       
@@ -512,14 +662,68 @@ function showCategoryDetails(category, projects, label, icon) {
       item.el.style.top = `${y}px`;
     });
 
+    // 📹 Mettre à jour le shader de la sphère hologramme
+    if (holoObject && holoObject.update) {
+      lastDeltaTime = clock.getDelta();
+      holoObject.update(lastDeltaTime);
+    }
+
     renderer.render(scene, camera);
   }
 
   animate();
 
+  function typeText(element, text, speed = 35, callback) {
+    element.textContent = '';
+    let index = 0;
+
+    function tick() {
+      if (index <= text.length) {
+        element.textContent = text.slice(0, index);
+        index += 1;
+        setTimeout(tick, speed + Math.floor(Math.random() * 20));
+      } else {
+        element.classList.add('typing-complete');
+        if (callback) callback();
+      }
+    }
+
+    tick();
+  }
+
+  function runHomeTypewriter() {
+    const sequence = [
+      { selector: '#view-home .home-title h1', delay: 150, speed: 55 },
+      { selector: '#view-home .home-title .home-subtitle', delay: 900, speed: 40 },
+      { selector: '#view-home .home-right-text', delay: 1600, speed: 22 }
+    ];
+
+    sequence.forEach(({ selector, delay, speed }) => {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      const text = el.dataset.text || el.textContent.trim();
+      el.textContent = '';
+      el.classList.remove('typing-complete');
+      setTimeout(() => typeText(el, text, speed), delay);
+    });
+  }
+
+  runHomeTypewriter();
+
   function switchView(viewName) {
     document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
     currentView = viewName;
+
+    // Masquer la tête / sphère hologramme (holoObject.sphere) pour toutes
+    // les vues sauf la page d'accueil afin qu'elle n'apparaisse pas dans
+    // 'À propos', 'Projets', etc.
+    try {
+      if (typeof holoObject !== 'undefined' && holoObject && holoObject.sphere) {
+        holoObject.sphere.visible = (viewName === 'home');
+      }
+    } catch (e) {
+      // noop
+    }
 
     if (viewName === 'home') {
       targetCameraX = 0;
@@ -568,6 +772,8 @@ function showCategoryDetails(category, projects, label, icon) {
       item.el.addEventListener('touchstart', (e) => { e.preventDefault(); navigateTo(item.name); }, {passive: false});
     }
   });
+
+  // fixed nav removed — sphere nav buttons handle navigation
 
   // Boîte permanente d'indication pour 'parcours' (timeline) en haut à gauche
   (function createPermanentTimelineBox() {
