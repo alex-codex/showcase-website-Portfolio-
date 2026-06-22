@@ -135,30 +135,35 @@ vec2 zoomedUv = (vUv - 0.5) * vec2(1.1, 1.1 * aspectRatio) + 0.5;
   // 🔊 Gérer l'audio : jouer une seule fois
   if (ambientAudio) {
     ambientAudio.volume = 0.6;
-    
+    ambientAudio.preload = 'auto';
+    ambientAudio.load();
+
     // Déverrouiller l'audio au premier clic/interaction
-    const playAudio = () => {
+    const playAudio = (event) => {
       ambientAudio.muted = false;
       ambientAudio.play().catch(err => {
-        console.log('Audio autoplay bloqué, attente d\'interaction utilisateur');
+        console.log('Audio autoplay bloqué, attente d\'interaction utilisateur', err);
       });
       document.removeEventListener('click', playAudio);
       document.removeEventListener('touchstart', playAudio);
+      document.removeEventListener('pointerdown', playAudio);
     };
-    
-    document.addEventListener('click', playAudio);
-    document.addEventListener('touchstart', playAudio);
-    
+
+    document.addEventListener('click', playAudio, { passive: false });
+    document.addEventListener('touchstart', playAudio, { passive: false });
+    document.addEventListener('pointerdown', playAudio, { passive: false });
+
     // Essayer de jouer immédiatement (certains navigateurs l'autorisent)
     ambientAudio.muted = false;
     ambientAudio.play().catch(err => {
-      console.log('Audio autoplay bloqué initialement');
+      console.log('Audio autoplay bloqué initialement', err);
     });
   }
 
   // 🎥 Gérer la vidéo : jouer une seule fois (pas de boucle)
   holoVideo.loop = true;
   holoVideo.muted = true;
+  holoVideo.playsInline = true;
   holoVideo.play().catch(err => {
     console.log('Lecture vidéo en attente:', err);
   });
@@ -510,10 +515,12 @@ function showCategoryDetails(category, projects, label, icon) {
   const radius = 20.0; 
   const defaultCameraZ = 38;
   const smallCameraZ = 42;
-  const mobileCameraZ = 46;
+  const mobileCameraZ = 50;
+  const extraMobileCameraZ = 54;
   const defaultSphereScale = 0.7;
   const smallSphereScale = 0.62;
   const mobileSphereScale = 0.5;
+  const extraMobileSphereScale = 0.42;
   let targetCameraZ = defaultCameraZ; 
   let targetCameraY = 0;
   let targetCameraX = 0;
@@ -575,12 +582,19 @@ function showCategoryDetails(category, projects, label, icon) {
   const holoObject = createHologramSphere(scene);
 
   function updateResponsive3D() {
-    if (window.innerWidth <= 520) {
+    const width = window.innerWidth;
+
+    if (width <= 420) {
+      targetCameraZ = extraMobileCameraZ;
+      if (holoObject && holoObject.sphere) {
+        holoObject.sphere.scale.set(extraMobileSphereScale, extraMobileSphereScale, extraMobileSphereScale);
+      }
+    } else if (width <= 520) {
       targetCameraZ = mobileCameraZ;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(mobileSphereScale, mobileSphereScale, mobileSphereScale);
       }
-    } else if (window.innerWidth <= 760) {
+    } else if (width <= 760) {
       targetCameraZ = smallCameraZ;
       if (holoObject && holoObject.sphere) {
         holoObject.sphere.scale.set(smallSphereScale, smallSphereScale, smallSphereScale);
