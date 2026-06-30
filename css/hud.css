@@ -1,0 +1,16 @@
+/* 🖥️ HUD — Signature discrète top-left */
+.hud-frame {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  pointer-events: none;
+  z-index: 900;
+}
+
+.hud-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 700;
+}

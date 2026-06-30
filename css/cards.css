@@ -1,0 +1,160 @@
+/* ══════════════════════════════════════════
+   Cartes Givrées + Panels contenu
+   ══════════════════════════════════════════ */
+.card-glass {
+  background: var(--bg-panel);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 40px;
+  border-radius: 2px;
+  width: 100%;
+  max-width: 850px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.card-glass h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: #ffffff;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#view-about .about-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+#view-about .about-main { display: flex; flex-direction: column; gap: 18px; }
+
+#view-about .about-lead {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#view-about .about-main p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+#view-about .about-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+#view-about .highlight-item {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--glass-border);
+  border-radius: 2px;
+  padding: 16px;
+}
+
+#view-about .highlight-title {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent-neon);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+#view-about .highlight-item p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+#view-about .about-side { display: grid; gap: 16px; }
+
+#view-about .about-card {
+  background: rgba(5, 5, 5, 0.9);
+  border: 1px solid var(--glass-border);
+  border-radius: 2px;
+  padding: 18px 20px;
+}
+
+#view-about .about-card-title {
+  display: block;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-neon);
+  font-weight: 700;
+}
+
+#view-about .about-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+#view-about .about-card ul li {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 14px;
+}
+
+#view-about .about-card ul li::before {
+  content: '//';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+#view-about .about-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.skills-mini { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.skills-mini span { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; border: 1px solid var(--glass-border); }
+
+/* Formulaire Contact */
+.spatial-form .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 15px; text-align: left; }
+.spatial-form input, .spatial-form textarea { background: rgba(0,0,0,0.2); border: 1px solid var(--glass-border); padding: 12px; border-radius: 2px; color: #fff; font-family: inherit; }
+.btn-send { background: var(--accent); color: white; border: 1px solid var(--accent); padding: 12px 24px; border-radius: 2px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 600; width: 100%; transition: all 0.3s; cursor: none; }
+.btn-send:hover { background: #ffffff; color: #000000; border-color: #ffffff; }
+
+/* Scrollbar */
+.card-glass::-webkit-scrollbar { width: 4px; }
+.card-glass::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+.card-glass::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); }
+.card-glass::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* Responsive panels */
+@media (max-width: 960px) {
+  #view-about .about-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  #view-about .about-grid { gap: 18px; }
+  #view-about .about-highlights { grid-template-columns: 1fr; }
+}

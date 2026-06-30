@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alexis Waffo — Portfolio Spatial 3D</title>
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bonheur+Royale&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <!-- 📹 Vidéo Hologramme (cachée, utilisée comme texture) -->
@@ -20,6 +21,31 @@
 </head>
 <body>
 
+  <!-- ⏳ Préchargeur (Preloader) Technique -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-title">ALEXIS WAFFO</div>
+      <div class="preloader-subtitle">PORTFOLIO SPATIAL 3D</div>
+      <div class="preloader-progress-container">
+        <div class="preloader-progress-bar"></div>
+      </div>
+      <div class="preloader-status">
+        <span class="status-label">SYSTEM READY:</span>
+        <span class="status-percent">0%</span>
+      </div>
+    </div>
+    <div class="preloader-decorations">
+      <div class="decor-line top-left"></div>
+      <div class="decor-line bottom-right"></div>
+      <div class="decor-coords">SYS.LOC [48.7885° N, 2.1932° E]</div>
+    </div>
+  </div>
+
+  <!-- Signature discrète top-left -->
+  <div class="hud-frame">
+    <span class="hud-logo">A.WAFFO // PORTFOLIO</span>
+  </div>
+
   <div id="canvas-container"></div>
 
   <div id="sphere-nav-overlay" class="sphere-nav-overlay">
@@ -32,13 +58,55 @@
   <main id="ui-layer">
     
     <section id="view-home" class="view-panel active">
-      <div class="home-ui-panel">
-        <div class="home-title">
-          <h1>Alexis Waffo</h1>
-          <p class="home-subtitle">Étudiant Ingénieur · ESEO Paris-Vélizy</p>
+
+      <!-- ZONE GAUCHE : Identité + Statut -->
+      <div class="home-left">
+        <div class="home-identity">
+          <h1 class="home-name">
+            <span class="name-first">Alexis</span>
+            <span class="name-last">Waffo</span>
+          </h1>
+          <p class="home-role">Étudiant Ingénieur · Data &amp; IA</p>
+          <div class="home-availability">
+            <span class="avail-dot"></span>
+            Disponible pour alternance — sept. 2025
+          </div>
         </div>
-        <div class="home-right-text typing-text" data-text="Explorez mon univers. Cliquez sur les nodules pour voyager au cœur de mes compétences et réalisations."></div>
+        <div class="home-contact">
+          <a href="mailto:alexiswaffo05@gmail.com" class="home-email">alexiswaffo05@gmail.com</a>
+          <div class="home-socials">
+            <a href="https://github.com/alex-codex" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/alexis-tr%C3%A9sor-waffo-624508297/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <p class="home-location">ESEO Paris-Vélizy · 48.7885°N</p>
       </div>
+
+      <!-- ZONE DROITE : Stack technique -->
+      <div class="home-right">
+        <div class="home-stack">
+          <span class="stack-label">// Stack</span>
+          <ul>
+            <li>Python &amp; SQL</li>
+            <li>Machine Learning</li>
+            <li>Data Science</li>
+            <li>Visualisation</li>
+            <li>Ingénierie Logicielle</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- NAV BAS : Navigation texte (complémente les nodules sphère) -->
+      <nav class="home-nav">
+        <button class="home-nav-btn" data-target="about">À propos</button>
+        <span class="nav-sep">·</span>
+        <button class="home-nav-btn" data-target="timeline">Parcours</button>
+        <span class="nav-sep">·</span>
+        <button class="home-nav-btn" data-target="projects">Projets</button>
+        <span class="nav-sep">·</span>
+        <button class="home-nav-btn" data-target="contact">Contact</button>
+      </nav>
+
     </section>
 
     <section id="view-about" class="view-panel">
@@ -151,9 +219,14 @@
     </section>
 
   </main>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/blob.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/cursor.js"></script>
 </body>
 </html>
