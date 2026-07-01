@@ -2,7 +2,7 @@
 
 /* ── ZONE GAUCHE : Identité + Contact ── */
 /* Backdrop partagé — zones home + nav */
-.home-left, .home-right, .home-nav {
+.home-left, .home-nav {
   background: rgba(0, 0, 0, 0.48);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -124,59 +124,6 @@
   text-transform: uppercase;
 }
 
-/* ── ZONE DROITE : Stack technique ── */
-.home-right {
-  position: fixed;
-  right: 48px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  z-index: 22;
-  pointer-events: auto;
-  text-align: right;
-  animation: slideInRight 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s both;
-  padding: 24px 28px;
-}
-
-.stack-label {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  color: var(--accent);
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.home-stack ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.home-stack ul li {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  transition: color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  justify-content: flex-end;
-}
-.home-stack ul li::before {
-  content: '//';
-  color: var(--accent);
-  font-size: 0.6rem;
-  flex-shrink: 0;
-}
-.home-stack ul li:hover { color: #ffffff; }
-
 /* ── NAV BAS ── */
 .home-nav {
   position: fixed;
@@ -227,10 +174,6 @@
   from { opacity: 0; transform: translateY(-50%) translateX(-28px); }
   to   { opacity: 1; transform: translateY(-50%) translateX(0); }
 }
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateY(-50%) translateX(28px); }
-  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
 @keyframes slideInUp {
   from { opacity: 0; transform: translateX(-50%) translateY(14px); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -267,28 +210,31 @@ a, button { cursor: none; }
 /* ── Responsive home ── */
 @media (max-width: 960px) {
   .home-left { left: 28px; }
-  .home-right { right: 28px; }
   .name-last { font-size: clamp(2.8rem, 8vw, 5rem); }
 }
 
 @media (max-width: 620px) {
-  /* Masque les nodules sphère — nav bas suffit */
+  /* Masque les nodules flottants de la sphère — la nav bar classique en bas suffit */
   #sphere-nav-overlay { display: none; }
+
+  /* Sphère réduite pour laisser toute la place au texte (voir js/main.js) */
 
   .home-left {
     left: 16px;
     right: 16px;
-    top: auto;
-    bottom: 100px;
+    top: 56px;
+    bottom: auto;
     transform: none;
-    gap: 14px;
+    gap: 12px;
     animation: none;
     opacity: 1;
-    background: rgba(0, 0, 0, 0.78);
-    padding: 20px 22px;
+    background: rgba(0, 0, 0, 0.82);
+    padding: 18px 20px;
   }
-  .home-right { display: none; }
+  .home-identity { gap: 10px; }
+  .home-role { font-size: 0.72rem; line-height: 1.4; }
   .home-nav { bottom: 16px; gap: 8px; flex-wrap: wrap; justify-content: center; left: 16px; right: 16px; transform: none; animation: none; opacity: 1; padding: 10px 16px; }
+  .home-nav-btn { font-size: 0.72rem; padding: 6px 2px; }
   .name-last { font-size: clamp(2.2rem, 9vw, 3.5rem); }
-  .home-availability { white-space: nowrap; font-size: 0.62rem; }
+  .home-availability { white-space: normal; font-size: 0.66rem; line-height: 1.4; }
 }

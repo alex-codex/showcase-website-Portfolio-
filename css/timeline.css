@@ -1,6 +1,13 @@
 /* ═══════════════════════════════════════════════
-   CONSTELLATION : STYLE INTERCONNECTÉ (Parcours)
+   PARCOURS — LISTE VERTICALE MINIMALISTE
    ═══════════════════════════════════════════════ */
+#view-timeline.view-panel {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
 #view-timeline .card-glass {
   background: transparent !important;
   border: none !important;
@@ -9,155 +16,96 @@
   padding: 0 !important;
   max-height: none !important;
   overflow: visible !important;
+  max-width: 720px;
 }
 
 .custom-timeline {
-  position: relative !important;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 8px 22px;
+  border-left: 1px solid var(--glass-border);
+}
+
+.timeline-row {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  padding-bottom: 32px;
+}
+
+.timeline-row:last-child { padding-bottom: 4px; }
+
+.timeline-row::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot-color, var(--accent));
+  box-shadow: 0 0 10px var(--dot-color, var(--accent));
+}
+
+.timeline-icon {
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 500px;
-}
-
-.timeline-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.star-node { 
-  position: absolute; 
-  cursor: pointer; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  transition: 0.4s ease; 
-  z-index: 5;
-}
-
-.star-glow { 
-  width: 14px; 
-  height: 14px; 
-  border-radius: 50%; 
-  box-shadow: 0 0 15px currentColor; 
-  transition: 0.3s;
-}
-
-/* 📌 AFFICHAGE PERMANENT du mini-aperçu */
-.star-preview {
-  position: absolute;
-  top: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  background: rgba(10, 15, 30, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 16px;
-  border-radius: 2px;
-  font-size: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  color: #e2e8f0;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0.92;
-  transition: 0.3s ease;
-  max-height: 70px;
-  overflow: hidden;
-}
-
-.star-node:hover .star-preview {
-  opacity: 1;
-  background: rgba(10, 15, 30, 0.95);
-  border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
-}
-
-/* 📌 CONTENU DÉTAILLÉ au survol */
-.star-content { 
-  position: absolute; 
-  top: 30px; 
-  width: 280px; 
-  opacity: 0; 
-  visibility: hidden;
-  background: rgba(10, 15, 30, 0.95);
-  border: 1px solid var(--accent);
-  padding: 20px; 
-  border-radius: 2px; 
-  pointer-events: none; 
-  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  z-index: 10;
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.star-node:hover .star-content { 
-  opacity: 1; 
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* ✅ Affichage persistant au clic */
-.star-node.active .star-content {
-  opacity: 1; 
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.star-node.active .star-glow {
-  transform: scale(1.8);
-  box-shadow: 0 0 25px currentColor;
-}
-
-.star-node:hover .star-glow { 
-  transform: scale(1.8); 
-  box-shadow: 0 0 25px currentColor;
-}
-
-.star-content h4 { color: #fff; margin-bottom: 5px; font-size: 1rem; font-weight: bold; }
-.star-content .year { color: var(--accent-neon); font-size: 0.75rem; font-weight: bold; }
-.star-content p { color: var(--text-muted); font-size: 0.8rem; margin-top: 8px; line-height: 1.5; }
-
-/* Hint box pour timeline ('parcours') */
-.timeline-hint-box {
-  position: fixed;
-  z-index: 400;
-  width: 220px;
-  padding: 10px 14px;
-  background: rgba(5, 5, 5, 0.9);
-  color: var(--text-light);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--glass-border);
-  border-radius: 2px;
+}
+
+.timeline-body { flex: 1; min-width: 0; }
+
+.timeline-year {
+  display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 220ms ease, opacity 220ms ease;
-  opacity: 1;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--dot-color, var(--accent-neon));
+  margin-bottom: 4px;
 }
 
-.timeline-hint-box.hide { opacity: 0; transform: translateY(-8px) scale(0.98); }
-
-@media (max-width: 520px) {
-  .timeline-hint-box { width: calc(100% - 32px); left: 16px !important; right: 16px; top: 16px !important; }
+.timeline-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3px;
 }
 
-/* Permanent variant: top-left fixed */
-.timeline-hint-box.permanent {
-  left: 16px !important;
-  top: 16px !important;
-  right: auto !important;
-  width: 220px;
-  border-radius: 2px;
-  display: none;
+.timeline-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
 }
 
-.timeline-hint-box.permanent.visible { display: block; }
+.timeline-detail {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
 
-@media (max-width: 520px) {
-  .timeline-hint-box.permanent { width: calc(100% - 32px); left: 16px !important; right: 16px !important; top: 12px !important; }
+@media (max-width: 620px) {
+  #view-timeline.view-panel { padding: 76px 14px 32px; align-items: flex-start; }
+  #view-timeline .card-glass {
+    background: rgba(5, 5, 5, 0.9) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 4px;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    padding: 22px 16px !important;
+  }
+  .custom-timeline { padding-left: 16px; }
+  .timeline-row { gap: 12px; padding-bottom: 24px; }
+  .timeline-row::before { left: -21px; }
+  .timeline-icon { width: 32px; height: 32px; font-size: 1.05rem; }
+  .timeline-title { font-size: 0.85rem; }
 }

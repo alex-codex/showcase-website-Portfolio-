@@ -23,6 +23,11 @@
   const MOBILE_BLOB_SCALE = 0.42;
   const EXTRA_BLOB_SCALE = 0.34;
 
+  const DEFAULT_SPHERE_SCALE = 1;
+  const SMALL_SPHERE_SCALE = 0.82;
+  const MOBILE_SPHERE_SCALE = 0.64;
+  const EXTRA_SPHERE_SCALE = 0.54;
+
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   
@@ -38,6 +43,7 @@
   let targetBlobScale = DEFAULT_BLOB_SCALE;
   let targetNoiseSpeed = 0.35;
   let targetNoiseStrength = 1.1;
+  let targetSphereScale = DEFAULT_SPHERE_SCALE;
 
   camera.position.z = targetCameraZ; 
 
@@ -97,13 +103,13 @@
   function updateResponsive3D() {
     const width = window.innerWidth;
     if (width <= 420) {
-      targetCameraZ = EXTRA_MOBILE_CAMERA_Z; targetCameraY = 0.18;
+      targetCameraZ = EXTRA_MOBILE_CAMERA_Z; targetCameraY = 0.18; targetSphereScale = EXTRA_SPHERE_SCALE;
     } else if (width <= 520) {
-      targetCameraZ = MOBILE_CAMERA_Z; targetCameraY = 0.1;
+      targetCameraZ = MOBILE_CAMERA_Z; targetCameraY = 0.1; targetSphereScale = MOBILE_SPHERE_SCALE;
     } else if (width <= 760) {
-      targetCameraZ = SMALL_CAMERA_Z; targetCameraY = 0.05;
+      targetCameraZ = SMALL_CAMERA_Z; targetCameraY = 0.05; targetSphereScale = SMALL_SPHERE_SCALE;
     } else {
-      targetCameraZ = DEFAULT_CAMERA_Z; targetCameraY = 0;
+      targetCameraZ = DEFAULT_CAMERA_Z; targetCameraY = 0; targetSphereScale = DEFAULT_SPHERE_SCALE;
     }
     if (currentView) updateBlobTargets(currentView);
   }
@@ -121,8 +127,8 @@
     if (isDragging && currentView === 'home') {
       const deltaX = e.clientX - previousMousePosition.x;
       const deltaY = e.clientY - previousMousePosition.y;
-      particleSphere.rotation.y += deltaX * 0.003;
-      particleSphere.rotation.x += deltaY * 0.003;
+      particleSphere.mesh.rotation.y += deltaX * 0.003;
+      particleSphere.mesh.rotation.x += deltaY * 0.003;
     }
     previousMousePosition = { x: e.clientX, y: e.clientY };
   };
@@ -159,13 +165,20 @@
 
     particleSphere.update(time);
 
+    const currentSphereScale = particleSphere.mesh.scale.x;
+    const nextSphereScale = currentSphereScale + (targetSphereScale - currentSphereScale) * 0.05;
+    particleSphere.mesh.scale.set(nextSphereScale, nextSphereScale, nextSphereScale);
+
     camera.position.z += (targetCameraZ - camera.position.z) * 0.03;
     camera.position.y += (targetCameraY - camera.position.y) * 0.03;
     camera.position.x += (targetCameraX - camera.position.x) * 0.03;
 
     navItems.forEach(item => {
       if (!item.el) return;
-      let wp = item.pos.clone().applyMatrix4(particleSphere.mesh.matrixWorld);
+      // Position fixe dans l'espace 3D (n'hérite plus de la rotation continue de la
+      // sphère : les nodules ne doivent pas "tourner" autour d'elle, seulement
+      // suivre sa taille via l'échelle courante, et flotter légèrement via CSS).
+      let wp = item.pos.clone().multiplyScalar(particleSphere.mesh.scale.x);
       // Rendre les éléments toujours visibles et cliquables (opacité min 0.35 pour l'effet de profondeur 3D)
       if (wp.z < 0) {
         item.el.style.opacity = '0.35'; 
@@ -252,21 +265,6 @@
     btn.addEventListener('click', () => navigateTo(btn.dataset.target));
     btn.addEventListener('touchstart', (e) => { e.preventDefault(); navigateTo(btn.dataset.target); }, {passive: false});
   });
-
-  (function createPermanentTimelineBox() {
-    const existing = document.getElementById('timeline-hint-box');
-    if (existing) return;
-    const box = document.createElement('div');
-    box.id = 'timeline-hint-box';
-    box.className = 'timeline-hint-box permanent';
-    box.textContent = 'Cliquer pour avoir les détails';
-    box.setAttribute('role', 'button');
-    box.setAttribute('aria-label', 'Cliquer pour avoir les détails du parcours');
-    document.body.appendChild(box);
-    box.addEventListener('click', (ev) => {
-      ev.stopPropagation(); navigateTo('timeline');
-    });
-  })();
 
   document.querySelectorAll('.back-btn').forEach(btn => {
     btn.addEventListener('click', () => goBack());

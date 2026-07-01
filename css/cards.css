@@ -155,6 +155,9 @@
   #view-about .about-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
+  .card-glass { padding: 24px 18px; max-height: 82vh; }
+  .card-glass h2 { font-size: 1.9rem; margin-bottom: 16px; }
   #view-about .about-grid { gap: 18px; }
   #view-about .about-highlights { grid-template-columns: 1fr; }
+  #view-about .about-lead { font-size: 0.85rem; }
 }
